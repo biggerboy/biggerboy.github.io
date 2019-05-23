@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[如何向女朋友解释int==Integer为true]]></title>
+    <url>%2F2019%2F05%2F23%2F%E5%A6%82%E4%BD%95%E5%90%91%E5%A5%B3%E6%9C%8B%E5%8F%8B%E8%A7%A3%E9%87%8Aint-Integer%E4%B8%BAtrue%2F</url>
+    <content type="text"><![CDATA[int==Integer为什么返回true先看现象吧 执行下面的代码及输出结果： 123456int a = 1;Integer b = 1;Integer c = new Integer(1);System.out.println(a==b);//trueSystem.out.println(a==c);//trueSystem.out.println(b==c);//false 通常大家对此的解释是，==对于基本类型来说比较的是值，对于引用类型来说比较的是引用，即指向的对象的内存地址。这样解释没错，b==c结果为false毋庸置疑，因为两个都是引用类型。但是为什么a==b（a==c）一个是基本类型一个是引用类型，比较的时候还是值比较呢？ 这个时候我们不妨把.java源文件编译后的.class文件使用反编译工具反编译成源码，看看虚拟机内部是如何处理a==b的。 .class文件使用jd-gui反编译后的： 123456int a = 1;Integer b = Integer.valueOf(1);Integer c = new Integer(1);System.out.println(a == b.intValue());System.out.println(a == c.intValue());System.out.println(b == c); 看到这想必大家都明白了吧，其实基本类型a和引用类型b比较时，引用类型b调用自身的intValue()方法获取Integer实际表示的int类型的值，即a == b.intValue()还是两个int类型的变量进行值比较。符合上述：==对于基本类型来说比较的是值，对于引用类型来说比较的是引用，即指向的对象的内存地址。 基本类型及引用类型在内存中的存储方式说到这，还要解释下为什么两个引用类型的值一样而引用不一样以及基本变量为什么是值比较。 其实基本变量int a在内存里只有一份，保存在栈（保存基本类型的变量数据及引用类型的引用）中，Integer b和Integer c中的int值都指向栈中同一个int，不会重新在栈中创建相同的int值。 而对于Integer b和Integer c，其实例是保存在堆（保存所有new出来的对象）中，虽然表示的int值相同，但是在堆中有两份，每次new都会在堆中开辟一片空间保存new的内容，故Integer b和Integer c分别在两片不同的内存空间存储，所以指向的内存地址不同。 而对于Integer b = 1;其反编译后为Integer b = Integer.valueOf(1);而valueOf()方法内部是调用了new。 JDK中Integer.valueOf()源码： 12345public static Integer valueOf(int i) &#123; if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high) return IntegerCache.cache[i + (-IntegerCache.low)]; return new Integer(i);&#125; 总结了解原理是弄清问题的关键，像这样的问题以后还多着呢。不懂的时候可以敲敲代码，然后反编译，看看虚拟机是怎么处理的，看看原理翻翻源码，问题也就迎刃而解了。]]></content>
+      <categories>
+        <category>java基础</category>
+      </categories>
+      <tags>
+        <tag>包装类</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Java类是如何默认继承Object的？]]></title>
+    <url>%2F2019%2F05%2F23%2FJava%E7%B1%BB%E6%98%AF%E5%A6%82%E4%BD%95%E9%BB%98%E8%AE%A4%E7%BB%A7%E6%89%BFObject%E7%9A%84%EF%BC%9F%2F</url>
+    <content type="text"><![CDATA[前言学过Java的同学都知道，Object是所有类的父类。但是你有没有这样的疑问，我并没有写extends Object，它是怎么默认继承Object的呢？ 那么今天我们就来看看像Java这种依赖于虚拟机的编程语言是怎样实现默认继承Object的，以及Java编译器和JVM到底是如何做的？ 继承自Object验证首先我们来验证一下Object是不是所有类的父类，随便新建一个Java类，如下图： 从上面的代码可以看出，new MyClass()打点之后可以选择调用的方法有很多，我们定义的MyClass类里面只有一个main方法，那这些方法哪来的，显然是Object里声明的，故MyClass类的父类就是Object，因此，在MyClass中可以使用Object类的public或protected资源。 另外，当A类继承MyClass类时，通过打点也可以调到Object内的方法，这是继承的传递，好比Object是MyClass的“父亲”，MyClass是A类的“父亲”，Object是A类的“爷爷”，间接的继承了Object。 因此，Object是超类，是所有类的父类。 推测可能的原因要了解Java类是如何默认继承Object的？的原因其实并不需要知道JVM的实现细节。只需了解一下对于这种虚拟机程序的基本原理即可。一般对于这种靠虚拟机运行的语言（如Java、C#等）会有两种方法处理默认继承问题。 编译器处理在编译源代码时，当一个类没有显式标明继承的父类时，编译器会为其指定一个默认的父类（一般为Object），而交给虚拟机处理这个类时，由于这个类已经有一个默认的父类了，因此，VM仍然会按照常规的方法像处理其他类一样来处理这个类。对于这种情况，从编译后的二进制角度来看，所有的类都会有一个父类（后面可以以此依据来验证）。 JVM处理编译器仍然按照实际代码进行编译，并不会做额外的处理，即如果一个类没有显式地继承于其他类时，编译后的代码仍然没有父类。然后由虚拟机运行二进制代码时，当遇到没有父类的类时，就会自动将这个类看成是Object类的子类（一般这类语言的默认父类都是Object）。 验证结论从上面两种情况可以看出，第1种情况是在编译器上做的文章，也就是说，当没有父类时，由编译器在编译时自动为其指定一个父类。第2种情况是在虚拟机上做文章，也就是这个默认的父类是由虚拟机来添加的。 那么Java是属于哪一种情况呢？其实这个答案很好得出。只需要随便找一个反编译工具，将.class文件进行反编译即可得知编译器是如何编译的。 就以上面代码为例，如果是第1种情况，就算MyClass没有父类，但由于编译器已经为MyClass自动添加了一个Object父类，所以，在反编译后得到的源代码中的MyClass类将会继承Object类的。如果不是这种情况，那么就是第2种情况。 那么实际情况是什么样的呢？现在我们就将MyClass.class反编译看看到底如何。 jd-gui反编： 使用JDK自带的工具（javap）反编译 CMD命令行下执行：javap MyClass&gt;MyClass.txt 可以看出实际的反编译后的文件中并没有extends Object，使用排除法，因此是第2情况。 这样来推导出的结论是第2种情况，但事实真的如此吗？为什么网上还有说反编译后的是有extends Object字样？ JDK版本问题？ 猜想是JDK版本的问题，于是把JDK版本切换到7，使用jd-gui和javap反编译，接果和使用JDK8反编译后的结果一样，也都没有extends Object。 继续换版本，昨晚在宿舍准备到Oracle官网下载JDK 6，但是死活下不来，今早到公司后第一件事就是下载，很顺利，安装后把JDK版本切换到JDK 6。 仍然在CMD窗口执行javap MyClass&gt;MyClass.txt，得到的TXT文件内容如下： what？竟然有extends Object，jd-gui反编译后的依然没有。即，JDK 6之前使用javap反编译后的MyClass类显式的继承Object，JDK 7以后没有；jd-gui反编译后的不管JDK版本如何始终没有。我们以java自带的工具为准。 总结那么就是说JDK 6之前是编译器处理，JDK 7之后是虚拟机处理。 但是仔细想想我们在编辑器里（IDE）打点时就能列出Object类下的方法，此时还没轮到编译器和jvm，编辑器就已经知道MyClass类的父类是Object类了，这是因为编辑器为我们做了一些智能处理。 【end】]]></content>
+      <categories>
+        <category>java基础</category>
+      </categories>
+      <tags>
+        <tag>继承</tag>
+      </tags>
+  </entry>
+</search>
