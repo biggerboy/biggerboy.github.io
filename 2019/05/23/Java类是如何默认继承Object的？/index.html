@@ -79,13 +79,20 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="walking">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="前言学过Object```，它是怎么默认继承Object的呢？12345678910111213141516171819202122232425262728293031那么今天我们就来看看像Java这种依赖于虚拟机的编程语言是怎样实现默认继承Object的，以及```Java编译器```和```JVM```到底是如何做的？## 继承自Object验证首先我们来验证一下Object是不是所有类的父类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java类是如何默认继承Object的？">
+<meta property="og:url" content="http://yoursite.com/2019/05/23/Java类是如何默认继承Object的？/index.html">
 <meta property="og:site_name" content="walking">
+<meta property="og:description" content="前言学过Object```，它是怎么默认继承Object的呢？12345678910111213141516171819202122232425262728293031那么今天我们就来看看像Java这种依赖于虚拟机的编程语言是怎样实现默认继承Object的，以及```Java编译器```和```JVM```到底是如何做的？## 继承自Object验证首先我们来验证一下Object是不是所有类的父类">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/4/2/169dbaf63b1195a3?w=997&h=160&f=png&s=10444">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/4/2/169dbade548201b0?w=956&h=174&f=png&s=12021">
+<meta property="og:updated_time" content="2019-05-23T08:13:18.929Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="walking">
+<meta name="twitter:title" content="Java类是如何默认继承Object的？">
+<meta name="twitter:description" content="前言学过Object```，它是怎么默认继承Object的呢？12345678910111213141516171819202122232425262728293031那么今天我们就来看看像Java这种依赖于虚拟机的编程语言是怎样实现默认继承Object的，以及```Java编译器```和```JVM```到底是如何做的？## 继承自Object验证首先我们来验证一下Object是不是所有类的父类">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/4/2/169dbaf63b1195a3?w=997&h=160&f=png&s=10444">
 
 
 
@@ -115,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/23/Java类是如何默认继承Object的？/">
 
 
 
 
 
-  <title>walking</title>
+  <title>Java类是如何默认继承Object的？ | walking</title>
   
 
 
@@ -140,8 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,9 +220,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -246,9 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/23/Java类是如何默认继承Object的？/" itemprop="url">Java类是如何默认继承Object的？</a></h1>
+          <h1 class="post-title" itemprop="name headline">Java类是如何默认继承Object的？</h1>
         
 
         <div class="post-meta">
@@ -298,9 +302,7 @@
       
 
       
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>学过<figure class="highlight plain"><figcaption><span>Object```，它是怎么默认继承Object的呢？</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">那么今天我们就来看看像Java这种依赖于虚拟机的编程语言是怎样实现默认继承Object的，以及```Java编译器```和```JVM```到底是如何做的？</span><br><span class="line">## 继承自Object验证</span><br><span class="line">首先我们来验证一下Object是不是所有类的父类，随便新建一个Java类，如下图：</span><br><span class="line">![](https://user-gold-cdn.xitu.io/2019/4/1/169d875991c972a0?w=937&amp;h=463&amp;f=png&amp;s=41790)</span><br><span class="line">从上面的代码可以看出，new MyClass()打点之后可以选择调用的方法有很多，我们定义的MyClass类里面只有一个main方法，那这些方法哪来的，显然是Object里声明的，故MyClass类的父类就是Object，因此，在MyClass中可以使用Object类的public或protected资源。</span><br><span class="line"></span><br><span class="line">另外，当A类继承MyClass类时，通过打点也可以调到Object内的方法，这是继承的传递，好比Object是MyClass的“父亲”，MyClass是A类的“父亲”，Object是A类的“爷爷”，间接的继承了Object。</span><br><span class="line"></span><br><span class="line">因此，Object是超类，是所有类的父类。</span><br><span class="line"></span><br><span class="line">## 推测可能的原因</span><br><span class="line">要了解```Java类是如何默认继承Object的？```的原因其实并不需要知道JVM的实现细节。只需了解一下对于这种虚拟机程序的基本原理即可。一般对于这种靠虚拟机运行的语言（如Java、C#等）会有两种方法处理默认继承问题。</span><br><span class="line">### 编译器处理</span><br><span class="line">在编译源代码时，当一个类没有显式标明继承的父类时，编译器会为其指定一个默认的父类（一般为Object），而交给虚拟机处理这个类时，由于这个类已经有一个默认的父类了，因此，VM仍然会按照常规的方法像处理其他类一样来处理这个类。对于这种情况，从编译后的二进制角度来看，所有的类都会有一个父类（后面可以以此依据来验证）。</span><br><span class="line">### JVM处理</span><br><span class="line">编译器仍然按照实际代码进行编译，并不会做额外的处理，即如果一个类没有显式地继承于其他类时，编译后的代码仍然没有父类。然后由虚拟机运行二进制代码时，当遇到没有父类的类时，就会自动将这个类看成是Object类的子类（一般这类语言的默认父类都是Object）。</span><br><span class="line">## 验证结论</span><br><span class="line">从上面两种情况可以看出，第1种情况是在编译器上做的文章，也就是说，当没有父类时，由编译器在编译时自动为其指定一个父类。第2种情况是在虚拟机上做文章，也就是这个默认的父类是由虚拟机来添加的。</span><br><span class="line"></span><br><span class="line">那么Java是属于哪一种情况呢？其实这个答案很好得出。只需要随便找一个反编译工具，将.class文件进行反编译即可得知编译器是如何编译的。</span><br><span class="line"></span><br><span class="line">就以上面代码为例，如果是第1种情况，就算MyClass没有父类，但由于编译器已经为MyClass自动添加了一个Object父类，所以，在反编译后得到的源代码中的MyClass类将会继承Object类的。如果不是这种情况，那么就是第2种情况。</span><br><span class="line"></span><br><span class="line">那么实际情况是什么样的呢？现在我们就将MyClass.class反编译看看到底如何。</span><br><span class="line"></span><br><span class="line">**jd-gui反编：**</span><br><span class="line">![](https://user-gold-cdn.xitu.io/2019/4/2/169dbb785db1ba24?w=950&amp;h=276&amp;f=png&amp;s=34286)</span><br><span class="line">**使用JDK自带的工具（javap）反编译**</span><br><span class="line"></span><br><span class="line">CMD命令行下执行：```javap MyClass&gt;MyClass.txt</span><br></pre></td></tr></table></figure></p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>学过<figure class="highlight plain"><figcaption><span>Object```，它是怎么默认继承Object的呢？</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">那么今天我们就来看看像Java这种依赖于虚拟机的编程语言是怎样实现默认继承Object的，以及```Java编译器```和```JVM```到底是如何做的？</span><br><span class="line">## 继承自Object验证</span><br><span class="line">首先我们来验证一下Object是不是所有类的父类，随便新建一个Java类，如下图：</span><br><span class="line">![](https://user-gold-cdn.xitu.io/2019/4/1/169d875991c972a0?w=937&amp;h=463&amp;f=png&amp;s=41790)</span><br><span class="line">从上面的代码可以看出，new MyClass()打点之后可以选择调用的方法有很多，我们定义的MyClass类里面只有一个main方法，那这些方法哪来的，显然是Object里声明的，故MyClass类的父类就是Object，因此，在MyClass中可以使用Object类的public或protected资源。</span><br><span class="line"></span><br><span class="line">另外，当A类继承MyClass类时，通过打点也可以调到Object内的方法，这是继承的传递，好比Object是MyClass的“父亲”，MyClass是A类的“父亲”，Object是A类的“爷爷”，间接的继承了Object。</span><br><span class="line"></span><br><span class="line">因此，Object是超类，是所有类的父类。</span><br><span class="line"></span><br><span class="line">## 推测可能的原因</span><br><span class="line">要了解```Java类是如何默认继承Object的？```的原因其实并不需要知道JVM的实现细节。只需了解一下对于这种虚拟机程序的基本原理即可。一般对于这种靠虚拟机运行的语言（如Java、C#等）会有两种方法处理默认继承问题。</span><br><span class="line">### 编译器处理</span><br><span class="line">在编译源代码时，当一个类没有显式标明继承的父类时，编译器会为其指定一个默认的父类（一般为Object），而交给虚拟机处理这个类时，由于这个类已经有一个默认的父类了，因此，VM仍然会按照常规的方法像处理其他类一样来处理这个类。对于这种情况，从编译后的二进制角度来看，所有的类都会有一个父类（后面可以以此依据来验证）。</span><br><span class="line">### JVM处理</span><br><span class="line">编译器仍然按照实际代码进行编译，并不会做额外的处理，即如果一个类没有显式地继承于其他类时，编译后的代码仍然没有父类。然后由虚拟机运行二进制代码时，当遇到没有父类的类时，就会自动将这个类看成是Object类的子类（一般这类语言的默认父类都是Object）。</span><br><span class="line">## 验证结论</span><br><span class="line">从上面两种情况可以看出，第1种情况是在编译器上做的文章，也就是说，当没有父类时，由编译器在编译时自动为其指定一个父类。第2种情况是在虚拟机上做文章，也就是这个默认的父类是由虚拟机来添加的。</span><br><span class="line"></span><br><span class="line">那么Java是属于哪一种情况呢？其实这个答案很好得出。只需要随便找一个反编译工具，将.class文件进行反编译即可得知编译器是如何编译的。</span><br><span class="line"></span><br><span class="line">就以上面代码为例，如果是第1种情况，就算MyClass没有父类，但由于编译器已经为MyClass自动添加了一个Object父类，所以，在反编译后得到的源代码中的MyClass类将会继承Object类的。如果不是这种情况，那么就是第2种情况。</span><br><span class="line"></span><br><span class="line">那么实际情况是什么样的呢？现在我们就将MyClass.class反编译看看到底如何。</span><br><span class="line"></span><br><span class="line">**jd-gui反编：**</span><br><span class="line">![](https://user-gold-cdn.xitu.io/2019/4/2/169dbb785db1ba24?w=950&amp;h=276&amp;f=png&amp;s=34286)</span><br><span class="line">**使用JDK自带的工具（javap）反编译**</span><br><span class="line"></span><br><span class="line">CMD命令行下执行：```javap MyClass&gt;MyClass.txt</span><br></pre></td></tr></table></figure></p>
 <p><img src="https://user-gold-cdn.xitu.io/2019/4/2/169dbaf63b1195a3?w=997&h=160&f=png&s=10444" alt><br>可以看出实际的反编译后的文件中并没有<code>extends Object</code>，使用排除法，因此是第2情况。</p>
 <p>这样来推导出的结论是第2种情况，但事实真的如此吗？为什么网上还有说反编译后的是有<code>extends Object</code>字样？</p>
 <p><strong>JDK版本问题？</strong></p>
@@ -311,8 +313,6 @@
 <p>但是仔细想想我们在<code>编辑器</code>里（IDE）打点时就能列出Object类下的方法，此时还没轮到编译器和jvm，编辑器就已经知道MyClass类的父类是Object类了，这是因为编辑器为我们做了一些智能处理。</p>
 <p>【end】</p>
 
-          
-        
       
     </div>
     
@@ -329,144 +329,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/23/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="walking">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="D:/blog/myblg/javahead.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="walking">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/23/hello-world/" itemprop="url">Hello World</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-23T13:17:13+08:00">
-                2019-05-23
-              </time>
+              <a href="/2019/05/23/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -476,10 +360,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -487,6 +372,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -507,8 +396,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -552,6 +450,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -685,6 +599,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
