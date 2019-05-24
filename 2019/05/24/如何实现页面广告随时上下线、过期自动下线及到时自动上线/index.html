@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="-redis -系统设计,">
+  <meta name="keywords" content="redis,系统设计,">
 
 
 
@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="背景引入最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。 需求描述某些页面需要配置广告或活动宣传图，广告或活动需满足随时上下线、过期自动下线及到时自动上线。 如：现在时间2019-2-22 16:16:13，要在支付完成页面配置领奖活动，活动要在2019-3-10 00:00:00准时上线，在2019-3-30">
-<meta name="keywords" content="-redis -系统设计">
+<meta name="description" content="背景引入最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。">
+<meta name="keywords" content="redis,系统设计">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何实现页面广告随时上下线、过期自动下线及到时自动上线">
 <meta property="og:url" content="http://yoursite.com/2019/05/24/如何实现页面广告随时上下线、过期自动下线及到时自动上线/index.html">
 <meta property="og:site_name" content="walking">
-<meta property="og:description" content="背景引入最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。 需求描述某些页面需要配置广告或活动宣传图，广告或活动需满足随时上下线、过期自动下线及到时自动上线。 如：现在时间2019-2-22 16:16:13，要在支付完成页面配置领奖活动，活动要在2019-3-10 00:00:00准时上线，在2019-3-30">
+<meta property="og:description" content="背景引入最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/3/5/1694d4d40b5332af?w=796&h=166&f=png&s=15348">
-<meta property="og:updated_time" content="2019-05-24T10:08:04.601Z">
+<meta property="og:updated_time" content="2019-05-24T10:10:24.576Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何实现页面广告随时上下线、过期自动下线及到时自动上线">
-<meta name="twitter:description" content="背景引入最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。 需求描述某些页面需要配置广告或活动宣传图，广告或活动需满足随时上下线、过期自动下线及到时自动上线。 如：现在时间2019-2-22 16:16:13，要在支付完成页面配置领奖活动，活动要在2019-3-10 00:00:00准时上线，在2019-3-30">
+<meta name="twitter:description" content="背景引入最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。">
 <meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/3/5/1694d4d40b5332af?w=796&h=166&f=png&s=15348">
 
 
@@ -389,7 +389,7 @@
       
 
       
-        <h2 id="背景引入"><a href="#背景引入" class="headerlink" title="背景引入"></a>背景引入</h2><p>最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。</p>
+        <h2 id="背景引入"><a href="#背景引入" class="headerlink" title="背景引入"></a>背景引入</h2><p>最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。<a id="more"></a></p>
 <h2 id="需求描述"><a href="#需求描述" class="headerlink" title="需求描述"></a>需求描述</h2><p>某些页面需要配置广告或活动宣传图，广告或活动需满足随时上下线、过期自动下线及到时自动上线。</p>
 <p>如：现在时间2019-2-22 16:16:13，要在支付完成页面配置领奖活动，活动要在2019-3-10 00:00:00准时上线，在2019-3-30 23:59:59结束活动。</p>
 <p>所以要的效果是，在活动上线前的任意时刻配置完活动后，页面到时间自动上线这个活动。<br>也可能会是其他的多个活动或广告，每个页面广告的个数可变，不同上下线时间可不同，其他页面也需要实现这样的功能，页面与页面之间的活动不一定一样。</p>
@@ -482,7 +482,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/redis-系统设计/" rel="tag"># -redis -系统设计</a>
+            <a href="/tags/redis/" rel="tag"># redis</a>
+          
+            <a href="/tags/系统设计/" rel="tag"># 系统设计</a>
           
         </div>
       
@@ -609,7 +611,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
