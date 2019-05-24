@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>walking</title>
+  
+  <subtitle>IT walking</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-05-24T06:22:16.048Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>walking</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何向女朋友解释int==Integer为true</title>
+    <link href="http://yoursite.com/2019/05/23/%E5%A6%82%E4%BD%95%E5%90%91%E5%A5%B3%E6%9C%8B%E5%8F%8B%E8%A7%A3%E9%87%8Aint-Integer%E4%B8%BAtrue/"/>
+    <id>http://yoursite.com/2019/05/23/如何向女朋友解释int-Integer为true/</id>
+    <published>2019-05-23T13:02:56.000Z</published>
+    <updated>2019-05-24T06:22:16.048Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;int-Integer为什么返回true&quot;&gt;&lt;a href=&quot;#int-Integer为什么返回true&quot; class=&quot;headerlink&quot; title=&quot;int==Integer为什么返回true&quot;&gt;&lt;/a&gt;int==Integer为什么返回true&lt;/h2&gt;&lt;p&gt;先看现象吧&lt;/p&gt;
+&lt;p&gt;执行下面的代码及输出结果：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;int a = 1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Integer b = 1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Integer c = new Integer(1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;System.out.println(a==b);//true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;System.out.println(a==c);//true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;System.out.println(b==c);//false&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="java基础" scheme="http://yoursite.com/categories/java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="包装类" scheme="http://yoursite.com/tags/%E5%8C%85%E8%A3%85%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java类是如何默认继承Object的？</title>
+    <link href="http://yoursite.com/2019/05/23/Java%E7%B1%BB%E6%98%AF%E5%A6%82%E4%BD%95%E9%BB%98%E8%AE%A4%E7%BB%A7%E6%89%BFObject%E7%9A%84%EF%BC%9F/"/>
+    <id>http://yoursite.com/2019/05/23/Java类是如何默认继承Object的？/</id>
+    <published>2019-05-23T12:54:28.000Z</published>
+    <updated>2019-05-24T05:56:14.336Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;p&gt;学过&lt;code&gt;Java&lt;/code&gt;的同学都知道，&lt;code&gt;Object&lt;/code&gt;是所有类的父类。但是你有没有这样的疑问，我并没有写&lt;code&gt;extends Object&lt;/code&gt;，它是怎么默认继承Object的呢？
+    
+    </summary>
+    
+      <category term="java基础" scheme="http://yoursite.com/categories/java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="继承" scheme="http://yoursite.com/tags/%E7%BB%A7%E6%89%BF/"/>
+    
+  </entry>
+  
+</feed>
