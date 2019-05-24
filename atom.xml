@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-05-24T06:22:16.048Z</updated>
+  <updated>2019-05-24T08:52:36.345Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,19 +17,43 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>搭建hexo静态博客框架全过程及踩的坑</title>
+    <link href="http://yoursite.com/2019/05/24/%E6%90%AD%E5%BB%BAhexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%A1%86%E6%9E%B6%E5%85%A8%E8%BF%87%E7%A8%8B%E5%8F%8A%E8%B8%A9%E7%9A%84%E5%9D%91/"/>
+    <id>http://yoursite.com/2019/05/24/搭建hexo静态博客框架全过程及踩的坑/</id>
+    <published>2019-05-24T08:49:29.000Z</published>
+    <updated>2019-05-24T08:52:36.345Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;网上有很多博客写了hexo的操作教程，但是都很生硬，我找了好几篇按照博客上写的一步一步操作，总是会遇到这样活那样的错误，导致最终卡主做不下去。而且很多博客只是一味的堆积教程、步骤，只字不提过程中会报什么错，咋解决，导致我很苦恼。&lt;/p&gt;
+&lt;p&gt;所以这篇文章将记录我按照别人的
+        
+      
+    
+    </summary>
+    
+      <category term="技术" scheme="http://yoursite.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="hexo，博客" scheme="http://yoursite.com/tags/hexo%EF%BC%8C%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
     <title>如何向女朋友解释int==Integer为true</title>
     <link href="http://yoursite.com/2019/05/23/%E5%A6%82%E4%BD%95%E5%90%91%E5%A5%B3%E6%9C%8B%E5%8F%8B%E8%A7%A3%E9%87%8Aint-Integer%E4%B8%BAtrue/"/>
     <id>http://yoursite.com/2019/05/23/如何向女朋友解释int-Integer为true/</id>
     <published>2019-05-23T13:02:56.000Z</published>
-    <updated>2019-05-24T06:22:16.048Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="int-Integer为什么返回true"><a href="#int-Integer为什么返回true" class="headerlink" title="int==Integer为什么返回true"></a>int==Integer为什么返回true</h2><p>先看现象吧</p><p>执行下面的代码及输出结果：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int a = 1;</span><br><span class="line">Integer b = 1;</span><br><span class="line">Integer c = new Integer(1);</span><br><span class="line">System.out.println(a==b);//true</span><br><span class="line">System.out.println(a==c);//true</span><br><span class="line">System.out.println(b==c);//false</span><br></pre></td></tr></table></figure><a id="more"></a><p>通常大家对此的解释是，==对于基本类型来说比较的是值，对于引用类型来说比较的是引用，即指向的对象的内存地址。这样解释没错，b==c结果为false毋庸置疑，因为两个都是引用类型。但是为什么a==b（a==c）一个是基本类型一个是引用类型，比较的时候还是值比较呢？</p><p>这个时候我们不妨把.java源文件编译后的.class文件使用反编译工具反编译成源码，看看虚拟机内部是如何处理a==b的。</p><p>.class文件使用jd-gui反编译后的：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int a = 1;</span><br><span class="line">Integer b = Integer.valueOf(1);</span><br><span class="line">Integer c = new Integer(1);</span><br><span class="line">System.out.println(a == b.intValue());</span><br><span class="line">System.out.println(a == c.intValue());</span><br><span class="line">System.out.println(b == c);</span><br></pre></td></tr></table></figure><p>看到这想必大家都明白了吧，其实基本类型a和引用类型b比较时，引用类型b调用自身的intValue()方法获取Integer实际表示的int类型的值，即a == b.intValue()还是两个int类型的变量进行值比较。符合上述：==对于基本类型来说比较的是值，对于引用类型来说比较的是引用，即指向的对象的内存地址。</p><h2 id="基本类型及引用类型在内存中的存储方式"><a href="#基本类型及引用类型在内存中的存储方式" class="headerlink" title="基本类型及引用类型在内存中的存储方式"></a>基本类型及引用类型在内存中的存储方式</h2><p>说到这，还要解释下为什么两个引用类型的值一样而引用不一样以及基本变量为什么是值比较。</p><p>其实基本变量int a在内存里只有一份，保存在栈（保存基本类型的变量数据及引用类型的引用）中，Integer b和Integer c中的int值都指向栈中同一个int，不会重新在栈中创建相同的int值。</p><p>而对于Integer b和Integer c，其实例是保存在堆（保存所有new出来的对象）中，虽然表示的int值相同，但是在堆中有两份，每次new都会在堆中开辟一片空间保存new的内容，故Integer b和Integer c分别在两片不同的内存空间存储，所以指向的内存地址不同。</p><p><img src="https://user-gold-cdn.xitu.io/2019/3/7/169571d32f54b03b?w=894&h=500&f=png&s=45036" alt><br>而对于Integer b = 1;其反编译后为Integer b = Integer.valueOf(1);<br>而valueOf()方法内部是调用了new。</p><p>JDK中Integer.valueOf()源码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static Integer valueOf(int i) &#123;</span><br><span class="line">        if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">            return IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">        return new Integer(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>了解原理是弄清问题的关键，像这样的问题以后还多着呢。不懂的时候可以敲敲代码，然后反编译，看看虚拟机是怎么处理的，看看原理翻翻源码，问题也就迎刃而解了。</p><hr>]]></content>
+    <updated>2019-05-24T08:36:01.816Z</updated>
     
     <summary type="html">
     
       &lt;h2 id=&quot;int-Integer为什么返回true&quot;&gt;&lt;a href=&quot;#int-Integer为什么返回true&quot; class=&quot;headerlink&quot; title=&quot;int==Integer为什么返回true&quot;&gt;&lt;/a&gt;int==Integer为什么返回true&lt;/h2&gt;&lt;p&gt;先看现象吧&lt;/p&gt;
 &lt;p&gt;执行下面的代码及输出结果：&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;int a = 1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Integer b = 1;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Integer c = new Integer(1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;System.out.println(a==b);//true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;System.out.println(a==c);//true&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;System.out.println(b==c);//false&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
@@ -46,8 +70,6 @@
     <id>http://yoursite.com/2019/05/23/Java类是如何默认继承Object的？/</id>
     <published>2019-05-23T12:54:28.000Z</published>
     <updated>2019-05-24T05:56:14.336Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>学过<code>Java</code>的同学都知道，<code>Object</code>是所有类的父类。但是你有没有这样的疑问，我并没有写<code>extends Object</code>，它是怎么默认继承Object的呢？<a id="more"></a></p><p>那么今天我们就来看看像Java这种依赖于虚拟机的编程语言是怎样实现默认继承Object的，以及<code>Java编译器</code>和<code>JVM</code>到底是如何做的？</p><h2 id="继承自Object验证"><a href="#继承自Object验证" class="headerlink" title="继承自Object验证"></a>继承自Object验证</h2><p>首先我们来验证一下Object是不是所有类的父类，随便新建一个Java类，如下图：</p><p><img src="https://user-gold-cdn.xitu.io/2019/4/1/169d875991c972a0?w=937&h=463&f=png&s=41790" alt></p><p>从上面的代码可以看出，new MyClass()打点之后可以选择调用的方法有很多，我们定义的MyClass类里面只有一个main方法，那这些方法哪来的，显然是Object里声明的，故MyClass类的父类就是Object，因此，在MyClass中可以使用Object类的public或protected资源。</p><p>另外，当A类继承MyClass类时，通过打点也可以调到Object内的方法，这是继承的传递，好比Object是MyClass的“父亲”，MyClass是A类的“父亲”，Object是A类的“爷爷”，间接的继承了Object。</p><p>因此，Object是超类，是所有类的父类。</p><h2 id="推测可能的原因"><a href="#推测可能的原因" class="headerlink" title="推测可能的原因"></a>推测可能的原因</h2><p>要了解<code>Java类是如何默认继承Object的？</code>的原因其实并不需要知道JVM的实现细节。只需了解一下对于这种虚拟机程序的基本原理即可。一般对于这种靠虚拟机运行的语言（如Java、C#等）会有两种方法处理默认继承问题。</p><h3 id="编译器处理"><a href="#编译器处理" class="headerlink" title="编译器处理"></a>编译器处理</h3><p>在编译源代码时，当一个类没有显式标明继承的父类时，编译器会为其指定一个默认的父类（一般为Object），而交给虚拟机处理这个类时，由于这个类已经有一个默认的父类了，因此，VM仍然会按照常规的方法像处理其他类一样来处理这个类。对于这种情况，从编译后的二进制角度来看，所有的类都会有一个父类（后面可以以此依据来验证）。</p><h3 id="JVM处理"><a href="#JVM处理" class="headerlink" title="JVM处理"></a>JVM处理</h3><p>编译器仍然按照实际代码进行编译，并不会做额外的处理，即如果一个类没有显式地继承于其他类时，编译后的代码仍然没有父类。然后由虚拟机运行二进制代码时，当遇到没有父类的类时，就会自动将这个类看成是Object类的子类（一般这类语言的默认父类都是Object）。</p><h2 id="验证结论"><a href="#验证结论" class="headerlink" title="验证结论"></a>验证结论</h2><p>从上面两种情况可以看出，第1种情况是在编译器上做的文章，也就是说，当没有父类时，由编译器在编译时自动为其指定一个父类。第2种情况是在虚拟机上做文章，也就是这个默认的父类是由虚拟机来添加的。</p><p>那么Java是属于哪一种情况呢？其实这个答案很好得出。只需要随便找一个反编译工具，将.class文件进行反编译即可得知编译器是如何编译的。</p><p>就以上面代码为例，如果是第1种情况，就算MyClass没有父类，但由于编译器已经为MyClass自动添加了一个Object父类，所以，在反编译后得到的源代码中的MyClass类将会继承Object类的。如果不是这种情况，那么就是第2种情况。</p><p>那么实际情况是什么样的呢？现在我们就将MyClass.class反编译看看到底如何。</p><p><strong>jd-gui反编：</strong></p><p><img src="https://user-gold-cdn.xitu.io/2019/4/2/169dbb785db1ba24?w=950&h=276&f=png&s=34286" alt></p><p><strong>使用JDK自带的工具（javap）反编译</strong></p><p>CMD命令行下执行：<code>javap MyClass&gt;MyClass.txt</code></p><p><img src="https://user-gold-cdn.xitu.io/2019/4/2/169dbaf63b1195a3?w=997&h=160&f=png&s=10444" alt><br>可以看出实际的反编译后的文件中并没有<code>extends Object</code>，使用排除法，因此是第2情况。</p><p>这样来推导出的结论是第2种情况，但事实真的如此吗？为什么网上还有说反编译后的是有<code>extends Object</code>字样？</p><p><strong>JDK版本问题？</strong></p><p>猜想是JDK版本的问题，于是把JDK版本切换到7，使用jd-gui和javap反编译，接果和使用JDK8反编译后的结果一样，也都没有<code>extends Object</code>。</p><p>继续换版本，昨晚在宿舍准备到Oracle官网下载JDK 6，但是死活下不来，今早到公司后第一件事就是下载，很顺利，安装后把JDK版本切换到JDK 6。</p><p>仍然在CMD窗口执行<code>javap MyClass&gt;MyClass.txt</code>，得到的TXT文件内容如下：</p><p><img src="https://user-gold-cdn.xitu.io/2019/4/2/169dbade548201b0?w=956&h=174&f=png&s=12021" alt></p><p>what？竟然有<code>extends Object</code>，jd-gui反编译后的依然没有。<br>即，JDK 6之前使用javap反编译后的MyClass类显式的继承Object，JDK 7以后没有；jd-gui反编译后的不管JDK版本如何始终没有。我们以java自带的工具为准。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>那么就是说JDK 6之前是<code>编译器</code>处理，JDK 7之后是<code>虚拟机</code>处理。</p><p>但是仔细想想我们在<code>编辑器</code>里（IDE）打点时就能列出Object类下的方法，此时还没轮到编译器和jvm，编辑器就已经知道MyClass类的父类是Object类了，这是因为编辑器为我们做了一些智能处理。</p><p>【end】</p>]]></content>
     
     <summary type="html">
     
