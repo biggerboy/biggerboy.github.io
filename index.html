@@ -385,20 +385,16 @@
 
       
         
-          
-            <h2 id="int-Integer为什么返回true"><a href="#int-Integer为什么返回true" class="headerlink" title="int==Integer为什么返回true"></a>int==Integer为什么返回true</h2><p>先看现象吧</p>
+          <h2 id="int-Integer为什么返回true"><a href="#int-Integer为什么返回true" class="headerlink" title="int==Integer为什么返回true"></a>int==Integer为什么返回true</h2><p>先看现象吧</p>
 <p>执行下面的代码及输出结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">int a = 1;</span><br><span class="line">Integer b = 1;</span><br><span class="line">Integer c = new Integer(1);</span><br><span class="line">System.out.println(a==b);//true</span><br><span class="line">System.out.println(a==c);//true</span><br><span class="line">System.out.println(b==c);//false</span><br><span class="line">```&lt;!--more--&gt;</span><br><span class="line">通常大家对此的解释是，==对于基本类型来说比较的是值，对于引用类型来说比较的是引用，即指向的对象的内存地址。这样解释没错，b==c结果为false毋庸置疑，因为两个都是引用类型。但是为什么a==b（a==c）一个是基本类型一个是引用类型，比较的时候还是值比较呢？</span><br><span class="line"></span><br><span class="line">这个时候我们不妨把.java源文件编译后的.class文件使用反编译工具反编译成源码，看看虚拟机内部是如何处理a==b的。</span><br><span class="line"></span><br><span class="line">.class文件使用jd-gui反编译后的：</span><br></pre></td></tr></table></figure>
-
-<p>int a = 1;<br>Integer b = Integer.valueOf(1);<br>Integer c = new Integer(1);<br>System.out.println(a == b.intValue());<br>System.out.println(a == c.intValue());<br>System.out.println(b == c);</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">看到这想必大家都明白了吧，其实基本类型a和引用类型b比较时，引用类型b调用自身的intValue()方法获取Integer实际表示的int类型的值，即a == b.intValue()还是两个int类型的变量进行值比较。符合上述：==对于基本类型来说比较的是值，对于引用类型来说比较的是引用，即指向的对象的内存地址。</span><br><span class="line">## 基本类型及引用类型在内存中的存储方式</span><br><span class="line">说到这，还要解释下为什么两个引用类型的值一样而引用不一样以及基本变量为什么是值比较。</span><br><span class="line"></span><br><span class="line">其实基本变量int a在内存里只有一份，保存在栈（保存基本类型的变量数据及引用类型的引用）中，Integer b和Integer c中的int值都指向栈中同一个int，不会重新在栈中创建相同的int值。</span><br><span class="line"></span><br><span class="line">而对于Integer b和Integer c，其实例是保存在堆（保存所有new出来的对象）中，虽然表示的int值相同，但是在堆中有两份，每次new都会在堆中开辟一片空间保存new的内容，故Integer b和Integer c分别在两片不同的内存空间存储，所以指向的内存地址不同。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">![](https://user-gold-cdn.xitu.io/2019/3/7/169571d32f54b03b?w=894&amp;h=500&amp;f=png&amp;s=45036)</span><br><span class="line">而对于Integer b = 1;其反编译后为Integer b = Integer.valueOf(1);</span><br><span class="line">而valueOf()方法内部是调用了new。</span><br><span class="line"></span><br><span class="line">JDK中Integer.valueOf()源码：</span><br></pre></td></tr></table></figure>
-
-<p>public static Integer valueOf(int i) {<br>        if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)<br>            return IntegerCache.cache[i + (-IntegerCache.low)];<br>        return new Integer(i);<br>}
-```</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>了解原理是弄清问题的关键，像这样的问题以后还多着呢。不懂的时候可以敲敲代码，然后反编译，看看虚拟机是怎么处理的，看看原理翻翻源码，问题也就迎刃而解了。</p>
-<hr>
-
-          
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int a = 1;</span><br><span class="line">Integer b = 1;</span><br><span class="line">Integer c = new Integer(1);</span><br><span class="line">System.out.println(a==b);//true</span><br><span class="line">System.out.println(a==c);//true</span><br><span class="line">System.out.println(b==c);//false</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/23/如何向女朋友解释int-Integer为true/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
