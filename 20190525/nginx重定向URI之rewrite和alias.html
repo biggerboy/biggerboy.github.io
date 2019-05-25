@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="walking">
 <meta property="og:description" content="熟悉Nginx的同学都知道Nginx可以用来做负载均衡和反向代理，非常好用。做前后端分离也是非常的方便。今天我们就来说一下，用Nginx做前后端分离时如何做URI重定向？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-25T04:31:56.610Z">
+<meta property="og:updated_time" content="2019-05-25T14:22:13.846Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx重定向URI之rewrite和alias">
 <meta name="twitter:description" content="熟悉Nginx的同学都知道Nginx可以用来做负载均衡和反向代理，非常好用。做前后端分离也是非常的方便。今天我们就来说一下，用Nginx做前后端分离时如何做URI重定向？">
@@ -389,7 +389,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  700
+                  698
                 </span>
               
 
@@ -431,10 +431,8 @@
 <p>就是说访问某一个或者某一规则URI时由Nginx的配置来决定重定向到另外一个或一类URI。</p>
 <p>有啥用呢？</p>
 <p>其中一个作用就是可以将请求映射到真实目录。具体啥意思呢？</p>
-<p>比如我们的URL是</p>
-<p><a href="http://www.abc.com/ITwalking/page/index.html" target="_blank" rel="noopener">http://www.abc.com/ITwalking/page/index.html</a></p>
-<p>而index.html在我们的系统目录</p>
-<p>D:/resources/ITwalking/page/下</p>
+<p>比如我们的URL是<br><code>http://www.abc.com/ITwalking/page/index.html</code><br>而index.html在我们的系统目录</p>
+<p><code>D:/resources/ITwalking/page/</code>下</p>
 <p>这时我们可以这样配置location:</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /ITwalking &#123;</span><br><span class="line">    root D:/resources/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -451,9 +449,9 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location /ITwalking/ &#123;</span><br><span class="line">    #使用 nginx alias 指令</span><br><span class="line">    alias D:/resources/page/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这样，当URL为</p>
-<p><a href="http://www.abc.com/ITwalking/page/index.html时，" target="_blank" rel="noopener">http://www.abc.com/ITwalking/page/index.html时，</a></p>
+<p><code>http://www.abc.com/ITwalking/page/index.html</code>时，</p>
 <p>会将此请求重定向到</p>
-<p>D:/resources/page/index.html</p>
+<p><code>D:/resources/page/index.html</code></p>
 <p>此时的ITwalking是虚拟目录，对此目录的访问重置到</p>
 <p>D:/resources/page/</p>
 <p>2、rewrite重定向，需要配合root指令一起使用</p>
@@ -483,7 +481,7 @@
   <p><span>本文标题:</span>nginx重定向URI之rewrite和alias</p>
   <p><span>文章作者:</span>walking</p>
   <p><span>发布时间:</span>2019年05月25日 - 12:27:31</p>
-  <p><span>最后更新:</span>2019年05月25日 - 12:31:56</p>
+  <p><span>最后更新:</span>2019年05月25日 - 22:22:13</p>
   <p><span>原始链接:</span><a href="/20190525/nginx重定向URI之rewrite和alias.html" title="nginx重定向URI之rewrite和alias">http://itwalking.top/20190525/nginx重定向URI之rewrite和alias.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://itwalking.top/20190525/nginx重定向URI之rewrite和alias.html" aria-label="复制成功！"></i></span>
   </p>
