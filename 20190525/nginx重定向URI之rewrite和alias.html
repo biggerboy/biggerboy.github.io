@@ -67,7 +67,7 @@
 
 
 
-  <meta name="keywords" content="java, IT, 技术">
+  <meta name="keywords" content="nginx,重定向">
 
 
 
@@ -80,17 +80,18 @@
 
 
 
-<meta name="description" content="个人博客，关于IT的原创文章，希望对你有帮助">
-<meta name="keywords" content="java；开发；编程">
-<meta property="og:type" content="website">
-<meta property="og:title" content="walking">
-<meta property="og:url" content="http://itwalking.top/archives/2019/05/index.html">
+<meta name="description" content="熟悉Nginx的同学都知道Nginx可以用来做负载均衡和反向代理，非常好用。做前后端分离也是非常的方便。今天我们就来说一下，用Nginx做前后端分离时如何做URI重定向？">
+<meta name="keywords" content="nginx,重定向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nginx重定向URI之rewrite和alias">
+<meta property="og:url" content="http://itwalking.top/20190525/nginx重定向URI之rewrite和alias.html">
 <meta property="og:site_name" content="walking">
-<meta property="og:description" content="个人博客，关于IT的原创文章，希望对你有帮助">
+<meta property="og:description" content="熟悉Nginx的同学都知道Nginx可以用来做负载均衡和反向代理，非常好用。做前后端分离也是非常的方便。今天我们就来说一下，用Nginx做前后端分离时如何做URI重定向？">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-25T04:30:36.020Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="walking">
-<meta name="twitter:description" content="个人博客，关于IT的原创文章，希望对你有帮助">
+<meta name="twitter:title" content="nginx重定向URI之rewrite和alias">
+<meta name="twitter:description" content="熟悉Nginx的同学都知道Nginx可以用来做负载均衡和反向代理，非常好用。做前后端分离也是非常的方便。今天我们就来说一下，用Nginx做前后端分离时如何做URI重定向？">
 
 
 
@@ -120,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://itwalking.top/archives/2019/05/">
+  <link rel="canonical" href="http://itwalking.top/20190525/nginx重定向URI之rewrite和alias.html">
 
 
 
 
 
-  <title>归档 | walking</title>
+  <title>nginx重定向URI之rewrite和alias | walking</title>
   
 
 
@@ -145,7 +146,7 @@
     
   
 
-  <div class="container sidebar-position-right page-archive">
+  <div class="container sidebar-position-right page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -281,142 +282,306 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://itwalking.top/20190525/nginx重定向URI之rewrite和alias.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="walking">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/bitbug_favicon 128-128.ico">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="walking">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h2 class="post-title" itemprop="name headline">nginx重定向URI之rewrite和alias</h2>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-25T12:27:31+08:00">
+                2019-05-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 8 篇日志。 继续努力。
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IT技术/" itemprop="url" rel="index">
+                    <span itemprop="name">IT技术</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h2 class="archive-year" id="archive-year-2019">2019</h2>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/20190525/nginx重定向URI之rewrite和alias.html" itemprop="url">
+          
+		  
+			<span class="post-meta-divider">|</span>
+			<span id="busuanzi_value_page_pv"></span>次阅读
+		  
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">nginx重定向URI之rewrite和alias</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  696
+                </span>
               
-            </a>
-        
-      </h3>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-25T12:27:31+08:00" content="2019-05-25">
-          05-25
-        </time>
-      </div>
+              
+                <span class="post-meta-divider">|</span>
+              
 
-    </header>
-  </article>
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/20190525/Hexo博客Next主题常用设置位置记录.html" itemprop="url">
-              
-                <span itemprop="name">Hexo博客Next主题优化配置记录</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-25T08:48:23+08:00" content="2019-05-25">
-          05-25
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
+      
+        <p>熟悉Nginx的同学都知道Nginx可以用来做负载均衡和反向代理，非常好用。做前后端分离也是非常的方便。今天我们就来说一下，用Nginx做前后端分离时如何做URI重定向？<a id="more"></a></p>
+<p>什么是URI重定向？</p>
+<p>就是说访问某一个或者某一规则URI时由Nginx的配置来决定重定向到另外一个或一类URI。</p>
+<p>有啥用呢？</p>
+<p>其中一个作用就是可以将请求映射到真实目录。具体啥意思呢？</p>
+<p>比如我们的URL是</p>
+<p><a href="http://www.abc.com/ITwalking/page/index.html" target="_blank" rel="noopener">http://www.abc.com/ITwalking/page/index.html</a></p>
+<p>而index.html在我们的系统目录</p>
+<p>D:/resources/ITwalking/page/下</p>
+<p>这时我们可以这样配置location:</p>
+<p>location /ITwalking {<br>    root D:/resources/;<br>}
+用root这种方式配置的话，location后面的ITwalking是作为系统目录的，</p>
+<p>即D:/resources/下要有/ITwalking/page这层目录。</p>
+<p>这种配置是没问题的。</p>
+<p>但假如我们的D:/resources/下直接就是page，</p>
+<p>然后下面直接就是文件呢，中间没</p>
+<p>有/ITwalking这层目录，怎么办呢？你可能会想，新建个ITwalking把page及其中的文件移动到里面，然后用上面的配置不就可以了吗。</p>
+<p>可以，但没必要！</p>
+<p>非常没必要，因为我们的resources/page目录可能是从git上clone的，如果我们新建目录移动进去，那我们是不是修改了本地git仓库，那我们提交代码或更新时咋办？再移出去？多麻烦啊。(因为我们请求后台必须要加/ITwalking的)</p>
+<p>为了解决这个问题，我们可以用 Nginx 的 alias 指令或者 rewrite 指令。</p>
+<p>1、alias指令用来重置当前文件的目录，lacation后面的是虚拟目录</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location /ITwalking/ &#123;</span><br><span class="line">    #使用 nginx alias 指令</span><br><span class="line">    alias D:/resources/page/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h3 class="post-title">
-        
-            <a class="post-title-link" href="/20190524/搭建hexo静态博客框架全过程及踩的坑.html" itemprop="url">
-              
-                <span itemprop="name">搭建hexo静态博客框架全过程及踩的坑</span>
-              
-            </a>
-        
-      </h3>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-24T16:49:29+08:00" content="2019-05-24">
-          05-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+<p>这样，当URL为</p>
+<p><a href="http://www.abc.com/ITwalking/page/index.html时，" target="_blank" rel="noopener">http://www.abc.com/ITwalking/page/index.html时，</a></p>
+<p>会将此请求重定向到</p>
+<p>D:/resources/page/index.html</p>
+<p>此时的ITwalking是虚拟目录，对此目录的访问重置到</p>
+<p>D:/resources/page/</p>
+<p>2、rewrite重定向，需要配合root指令一起使用</p>
+<p>location /ITwalking/ {<br>    root D:/resources/page/;</p>
+<pre><code>#使用 nginx rewrite 指令
+rewrite ^/ITwalking/(.*?)$ /$1 break;</code></pre><p>}
+这两种效果是一样的。^/ITwalking/(.*?)$是正则，表示满足这个正则的请求，都重定向到D:/resources/page/下，/$1重定向的地址，break终止匹配。</p>
+<p>rewrite是针对http请求的，它里面的路径是网址里面的地址，rewrite做的是地址间的转换。<br>而root和alias是系统文件路径的设置。<br>区别是，root用来设置根目录，而alias用来重置当前文件的目录。</p>
+<p>关于rewrite和alias重定向的例子先说到这，这也是我实际遇到的，这两种方式完美的满足了我的需求。</p>
+<p>二者的详细用法，后续的文章会详细讲解。</p>
 
       
-
     </div>
+    
+    
+    
+	<div>
+    
+        
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>nginx重定向URI之rewrite和alias</p>
+  <p><span>文章作者:</span>walking</p>
+  <p><span>发布时间:</span>2019年05月25日 - 12:27:31</p>
+  <p><span>最后更新:</span>2019年05月25日 - 12:30:36</p>
+  <p><span>原始链接:</span><a href="/20190525/nginx重定向URI之rewrite和alias.html" title="nginx重定向URI之rewrite和alias">http://itwalking.top/20190525/nginx重定向URI之rewrite和alias.html</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://itwalking.top/20190525/nginx重定向URI之rewrite和alias.html" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
+    
+	</div>
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持是我创作的源泉！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wxpay.png" alt="walking 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.png" alt="walking 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+	
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nginx/" rel="tag"># nginx</a>
+          
+            <a href="/tags/前后端分离/" rel="tag"># 前后端分离</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/20190525/Hexo博客Next主题常用设置位置记录.html" rel="next" title="Hexo博客Next主题优化配置记录">
+                <i class="fa fa-chevron-left"></i> Hexo博客Next主题优化配置记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -424,6 +589,15 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80NDM5MC8yMDkyMg=="></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -685,6 +859,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -713,6 +891,17 @@
 
 
 
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
   
 
 
