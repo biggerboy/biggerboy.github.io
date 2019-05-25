@@ -67,7 +67,7 @@
 
 
 
-  <meta name="keywords" content="继承,">
+  <meta name="keywords" content="开发规范,">
 
 
 
@@ -80,23 +80,18 @@
 
 
 
-<meta name="description" content="前言学过Java的同学都知道，Object是所有类的父类。但是你有没有这样的疑问，我并没有写extends Object，它是怎么默认继承Object的呢？">
-<meta name="keywords" content="继承">
+<meta name="description" content="前言在这个春风得意马蹄疾，金三银四跳槽季的日子里，相信很多小伙伴都拿到了心仪的offer了吧，其中不乏有初入职场的同学。那么今天，我就从服务端的角度来给大家分享一些关于工作中开发流程的经验，希望初入职场的同学尽量少踩坑不背锅，能够顺利通过考核期。">
+<meta name="keywords" content="开发规范">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java类是如何默认继承Object的？">
-<meta property="og:url" content="http://itwalking.top/Java类是如何默认继承Object的？.html">
+<meta property="og:title" content="写给即将入职的你-软件工程之需求开发流程">
+<meta property="og:url" content="http://itwalking.top/20190324/写给即将入职的你-软件工程之需求开发流程.html">
 <meta property="og:site_name" content="walking">
-<meta property="og:description" content="前言学过Java的同学都知道，Object是所有类的父类。但是你有没有这样的疑问，我并没有写extends Object，它是怎么默认继承Object的呢？">
+<meta property="og:description" content="前言在这个春风得意马蹄疾，金三银四跳槽季的日子里，相信很多小伙伴都拿到了心仪的offer了吧，其中不乏有初入职场的同学。那么今天，我就从服务端的角度来给大家分享一些关于工作中开发流程的经验，希望初入职场的同学尽量少踩坑不背锅，能够顺利通过考核期。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/4/1/169d875991c972a0?w=937&h=463&f=png&s=41790">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/4/2/169dbb785db1ba24?w=950&h=276&f=png&s=34286">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/4/2/169dbaf63b1195a3?w=997&h=160&f=png&s=10444">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/4/2/169dbade548201b0?w=956&h=174&f=png&s=12021">
-<meta property="og:updated_time" content="2019-05-24T05:56:14.336Z">
+<meta property="og:updated_time" content="2019-05-24T10:17:45.590Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java类是如何默认继承Object的？">
-<meta name="twitter:description" content="前言学过Java的同学都知道，Object是所有类的父类。但是你有没有这样的疑问，我并没有写extends Object，它是怎么默认继承Object的呢？">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/4/1/169d875991c972a0?w=937&h=463&f=png&s=41790">
+<meta name="twitter:title" content="写给即将入职的你-软件工程之需求开发流程">
+<meta name="twitter:description" content="前言在这个春风得意马蹄疾，金三银四跳槽季的日子里，相信很多小伙伴都拿到了心仪的offer了吧，其中不乏有初入职场的同学。那么今天，我就从服务端的角度来给大家分享一些关于工作中开发流程的经验，希望初入职场的同学尽量少踩坑不背锅，能够顺利通过考核期。">
 
 
 
@@ -126,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://itwalking.top/Java类是如何默认继承Object的？.html">
+  <link rel="canonical" href="http://itwalking.top/20190324/写给即将入职的你-软件工程之需求开发流程.html">
 
 
 
 
 
-  <title>Java类是如何默认继承Object的？ | walking</title>
+  <title>写给即将入职的你-软件工程之需求开发流程 | walking</title>
   
 
 
@@ -301,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://itwalking.top/Java类是如何默认继承Object的？.html">
+    <link itemprop="mainEntityOfPage" href="http://itwalking.top/20190324/写给即将入职的你-软件工程之需求开发流程.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="walking">
@@ -318,7 +313,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Java类是如何默认继承Object的？</h2>
+          <h2 class="post-title" itemprop="name headline">写给即将入职的你-软件工程之需求开发流程</h2>
         
 
         <div class="post-meta">
@@ -330,8 +325,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-23T20:54:28+08:00">
-                2019-05-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-24T18:15:47+08:00">
+                2019-03-24
               </time>
             
 
@@ -353,8 +348,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java基础/" itemprop="url" rel="index">
-                    <span itemprop="name">java基础</span>
+                  <a href="/categories/经验分享/" itemprop="url" rel="index">
+                    <span itemprop="name">经验分享</span>
                   </a>
                 </span>
 
@@ -387,7 +382,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.3k
+                  3.3k
                 </span>
               
 
@@ -403,7 +398,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  4
+                  11
                 </span>
               
             </div>
@@ -424,42 +419,72 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>学过<code>Java</code>的同学都知道，<code>Object</code>是所有类的父类。但是你有没有这样的疑问，我并没有写<code>extends Object</code>，它是怎么默认继承Object的呢？<a id="more"></a></p>
-<p>那么今天我们就来看看像Java这种依赖于虚拟机的编程语言是怎样实现默认继承Object的，以及<code>Java编译器</code>和<code>JVM</code>到底是如何做的？</p>
-<h2 id="继承自Object验证"><a href="#继承自Object验证" class="headerlink" title="继承自Object验证"></a>继承自Object验证</h2><p>首先我们来验证一下Object是不是所有类的父类，随便新建一个Java类，如下图：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/4/1/169d875991c972a0?w=937&h=463&f=png&s=41790" alt></p>
-<p>从上面的代码可以看出，new MyClass()打点之后可以选择调用的方法有很多，我们定义的MyClass类里面只有一个main方法，那这些方法哪来的，显然是Object里声明的，故MyClass类的父类就是Object，因此，在MyClass中可以使用Object类的public或protected资源。</p>
-<p>另外，当A类继承MyClass类时，通过打点也可以调到Object内的方法，这是继承的传递，好比Object是MyClass的“父亲”，MyClass是A类的“父亲”，Object是A类的“爷爷”，间接的继承了Object。</p>
-<p>因此，Object是超类，是所有类的父类。</p>
-<h2 id="推测可能的原因"><a href="#推测可能的原因" class="headerlink" title="推测可能的原因"></a>推测可能的原因</h2><p>要了解<code>Java类是如何默认继承Object的？</code>的原因其实并不需要知道JVM的实现细节。只需了解一下对于这种虚拟机程序的基本原理即可。一般对于这种靠虚拟机运行的语言（如Java、C#等）会有两种方法处理默认继承问题。</p>
-<h3 id="编译器处理"><a href="#编译器处理" class="headerlink" title="编译器处理"></a>编译器处理</h3><p>在编译源代码时，当一个类没有显式标明继承的父类时，编译器会为其指定一个默认的父类（一般为Object），而交给虚拟机处理这个类时，由于这个类已经有一个默认的父类了，因此，VM仍然会按照常规的方法像处理其他类一样来处理这个类。对于这种情况，从编译后的二进制角度来看，所有的类都会有一个父类（后面可以以此依据来验证）。</p>
-<h3 id="JVM处理"><a href="#JVM处理" class="headerlink" title="JVM处理"></a>JVM处理</h3><p>编译器仍然按照实际代码进行编译，并不会做额外的处理，即如果一个类没有显式地继承于其他类时，编译后的代码仍然没有父类。然后由虚拟机运行二进制代码时，当遇到没有父类的类时，就会自动将这个类看成是Object类的子类（一般这类语言的默认父类都是Object）。</p>
-<h2 id="验证结论"><a href="#验证结论" class="headerlink" title="验证结论"></a>验证结论</h2><p>从上面两种情况可以看出，第1种情况是在编译器上做的文章，也就是说，当没有父类时，由编译器在编译时自动为其指定一个父类。第2种情况是在虚拟机上做文章，也就是这个默认的父类是由虚拟机来添加的。</p>
-<p>那么Java是属于哪一种情况呢？其实这个答案很好得出。只需要随便找一个反编译工具，将.class文件进行反编译即可得知编译器是如何编译的。</p>
-<p>就以上面代码为例，如果是第1种情况，就算MyClass没有父类，但由于编译器已经为MyClass自动添加了一个Object父类，所以，在反编译后得到的源代码中的MyClass类将会继承Object类的。如果不是这种情况，那么就是第2种情况。</p>
-<p>那么实际情况是什么样的呢？现在我们就将MyClass.class反编译看看到底如何。</p>
-<p><strong>jd-gui反编：</strong></p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/4/2/169dbb785db1ba24?w=950&h=276&f=png&s=34286" alt></p>
-<p><strong>使用JDK自带的工具（javap）反编译</strong></p>
-<p>CMD命令行下执行：<code>javap MyClass&gt;MyClass.txt</code></p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/4/2/169dbaf63b1195a3?w=997&h=160&f=png&s=10444" alt><br>可以看出实际的反编译后的文件中并没有<code>extends Object</code>，使用排除法，因此是第2情况。</p>
-<p>这样来推导出的结论是第2种情况，但事实真的如此吗？为什么网上还有说反编译后的是有<code>extends Object</code>字样？</p>
-<p><strong>JDK版本问题？</strong></p>
-<p>猜想是JDK版本的问题，于是把JDK版本切换到7，使用jd-gui和javap反编译，接果和使用JDK8反编译后的结果一样，也都没有<code>extends Object</code>。</p>
-<p>继续换版本，昨晚在宿舍准备到Oracle官网下载JDK 6，但是死活下不来，今早到公司后第一件事就是下载，很顺利，安装后把JDK版本切换到JDK 6。</p>
-<p>仍然在CMD窗口执行<code>javap MyClass&gt;MyClass.txt</code>，得到的TXT文件内容如下：</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/4/2/169dbade548201b0?w=956&h=174&f=png&s=12021" alt></p>
-<p>what？竟然有<code>extends Object</code>，jd-gui反编译后的依然没有。<br>即，JDK 6之前使用javap反编译后的MyClass类显式的继承Object，JDK 7以后没有；jd-gui反编译后的不管JDK版本如何始终没有。我们以java自带的工具为准。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>那么就是说JDK 6之前是<code>编译器</code>处理，JDK 7之后是<code>虚拟机</code>处理。</p>
-<p>但是仔细想想我们在<code>编辑器</code>里（IDE）打点时就能列出Object类下的方法，此时还没轮到编译器和jvm，编辑器就已经知道MyClass类的父类是Object类了，这是因为编辑器为我们做了一些智能处理。</p>
-<p>【end】</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在这个春风得意马蹄疾，金三银四跳槽季的日子里，相信很多小伙伴都拿到了心仪的offer了吧，其中不乏有初入职场的同学。那么今天，我就从服务端的角度来给大家分享一些关于工作中开发流程的经验，希望初入职场的同学尽量少踩坑不背锅，能够顺利通过考核期。<a id="more"></a></p>
+<p>进入公司你会发现，一般正规点的公司都会分很多部门，如开发部（科技部或研发部）、产品部（业务部）等，这两个部门是相互对等的，也就是说后者负责产品功能的创意、设计，产品的大方向，说白了就是负责提出产品需求，把控产品的定位和走向；而前者则是需求的受理者，负责从软件、技术层面来实现后者提出的需求。两个部门没有上下级的关系。</p>
+<p>而对于我们程序员来说，做一个需求从接到需求到上线的完整流程大致如下：</p>
+<ul>
+<li>需求分析（包括需求调研，需求讨论，需求确定，接口确认）</li>
+<li>系统设计（设计该功能实现细节，要用到什么技术等）</li>
+<li>系统实现（从软件代码技术层面实现功能）</li>
+<li>功能测试（包括开发自测，提交测试，业务测试）</li>
+<li>需求上线（业务验收，验收是否通过，代码是否回退）</li>
+</ul>
+<h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><p>从你拿到需求文档开始说起，你会看到需求文档至少包括2部分来阐述这个需求：需求背景和需求描述。</p>
+<blockquote>
+<p><strong><em>需求背景</em></strong>：
+主要告诉你为什么会有这个需求，提这个需求的目的是什么。<br><strong><em>需求描述</em></strong>：
+这才是这个需求的重点，主要告诉你要实现什么样的功能，做成什么样的效果，以及一些业务规则等，可能还会放几个页面的原型图，这就再好不过了。</p>
+</blockquote>
+<p>这些都是业务部门经过深思熟虑、各级领导审核通过后的需求，才会到研发部门，研发部受理这个需求，分给你的组长或直接分给你。</p>
+<p>言归正传，你接到需求，打开需求文档，开始看需求了。</p>
+<h3 id="1、快速通读"><a href="#1、快速通读" class="headerlink" title="1、快速通读"></a>1、快速通读</h3><p>可以先快速地通读一遍，了解需求的大致意思，对需求有个整体的把握，做到<strong>心中有数</strong>。</p>
+<h3 id="2、抓重点、记疑问"><a href="#2、抓重点、记疑问" class="headerlink" title="2、抓重点、记疑问"></a>2、抓重点、记疑问</h3><p>然后第二遍，看细节，抓疑问点。<br>这一遍，你可以看仔细点，把一些关键点认真看看理解一下，同时看的时候可能会发现需求有写的不明确的地方，或者需要确认的地方，或者你会有一些<strong>疑问</strong>，这个时候你可以把这些点<strong>记录</strong>下来，认真读完一遍之后，你记录了一些问题。</p>
+<h3 id="3、答疑解惑"><a href="#3、答疑解惑" class="headerlink" title="3、答疑解惑"></a>3、答疑解惑</h3><p>读完两遍之后，你有一些疑问。然后你可以找个时间拉上经理或需求负责人，开发组长，前后端开发人员，业务（提需求的业务人员，他是最了解需求的人）、测试负责人一起当面<strong>开个小会</strong>（能当面绝不群里聊），去解决你记录的疑问点，把这些需求里你认为写的不确定的地方弄清楚。这个过程就是答疑解惑。</p>
+<p>在这个讨论过程中，定下来的业务规则务必要记录下来，会后可以<strong>发一封电子邮件</strong>，把需求确认的东西或者业务又新加的东西写在邮件里，提醒业务确认无误后让他<strong>更新需求文档</strong>，并且邮件抄送给一起开会的人。</p>
+<blockquote>
+<p>为什么拉上这么多人呢？因为你有疑问的地方你的组长，经理等也可能有疑问，这种拍板钉钉的事不能只让你一个人知道，到时候做完了上线了，业务发现不想要那样的效果了赖账不承认了咋办。拉上测试是为了避免开发和测试理解需求上有偏差，避免测试写的测试案例和需求要求有出入。</p>
+</blockquote>
+<blockquote>
+<p>为什么发邮件呢？做这一步也是为了规范开发流程以及留个底有个证据吧，防止以后问你为啥这样做，你就有据可依了。不然你单凭嘴说：当时讨论就这样定的。这样说服力不够啊。我们一定要做到，不甩锅也绝不无故背锅！</p>
+</blockquote>
+<h3 id="4、准备材料"><a href="#4、准备材料" class="headerlink" title="4、准备材料"></a>4、准备材料</h3><p>需求讨论过程中如发现涉及其他系统，提出来，并确认下其他系统接口有没有提供好，并通过项目经理向其他系统要<strong>接口文档</strong>（系统间的文档收发，最好通过系统负责人，即使都是内部系统）；另外，如涉及到页面改动需要提供<strong>UI</strong>的，督促业务及时提供UI，防止延误需求上线。</p>
+<blockquote>
+<p>为什么出UI？出UI的目的是严格按照UI图的尺寸、色值来做页面，防止到时候前端做好页面后业务又来扣这些细节，让你返工，还显得你干活不利索。假如有的公司根本没有UI设计师，那就提前和业务说好，做的时候让业务把把关，看是否复合他要的效果。</p>
+</blockquote>
+<h3 id="5、工作记录"><a href="#5、工作记录" class="headerlink" title="5、工作记录"></a>5、工作记录</h3><p>其次，针对该需求，写每日<strong>工作进度</strong>（日报）时，写上当前需求到了哪个<strong>阶段</strong>（如需求分析阶段，开发阶段等，具体到了哪个阶段，自己评估），以及当前遇到的<strong>阻碍</strong>等。这样如果有阻碍，即使是延误了上线，也不是自己的原因。</p>
+<p>注意：1、系统间<strong>接口联调</strong>大概需要1-2天，复杂的接口可能需要更长的时间。系统联调最好放在系统设计前，这样可以发现接口返回内容是不是满足这个需求，并提出这个问题。如果你开发的时候用到这个接口的时候再联调才发现问题，那不是耽误时间了吗。</p>
+<p>2、假如第一次调用该系统，还要注意开通系统间的网络，不然无法访问。<strong>开通网络</strong>当然也需要项目负责人来申请。而且一定要测试环境和生产环境的网络一并开通，开通后并测试是否真的已经开通。这样防止没有开通网络，上线后调不通，又临时火急火燎的发邮件申请开通网络，这样只会让你难堪，显得你这个人不够仔细。</p>
+<h2 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h2><p>需求分析，接口联调，开通网络等一些准备工作及杂事处理完后，就可以开始系统设计了或者边处理边进行系统设计（因为你等着出UI、开网都需要时间）。</p>
+<p>系统设计就是来思考怎么来实现这个功能，实现流程是什么样的，要不要新增表或增加表字段，表结构如何设计，要写几个接口给前端，调用顺序是什么样的，返回什么样的数据，数据格式什么样的，可以和前端开发坐一块儿讨论。这些应该在你分析完需求后就有了一个大致的思路，然后现在提取需求的关键词、关键点作具体的<strong>详细设计</strong>。</p>
+<p>系统设计也是很重要的一环，是在写代码之前定的目标，做的一个宏观规划。尽量不要边写代码边想怎么实现，这样会导致最后思路很乱写的代码也很乱。</p>
+<p>建议最好画流程图，条件允许的情况下小组内评审下，找出不足。</p>
+<p>在系统设计阶段如果需引入新技术，一定要考虑使用什么技术，技术的复杂度，成熟度等，为什么用这个技术，好处是什么。如果自己不敢确定用什么技术，可以找技术经理或比自己经验丰富的同事一起定一下。初入职场或经验颇少的同学，可以把自己的设计思路和他们说一下，让他们把把关。</p>
+<h2 id="系统实现"><a href="#系统实现" class="headerlink" title="系统实现"></a>系统实现</h2><p>这一步就是你最喜欢的写代码阶段了，写代码的一些规范不用我多说了吧，下载阿里的开发手册看看，或自己公司的开发规范。</p>
+<p>业务代码一定要加注释，在关键步骤加上简单的注释，以便日后自己看或者其他同事接替你的时候能一目了然，看懂这代码是在干嘛，不至于背地里被吐槽被骂娘。很多时候一些同学自己写的代码，不加一行注释，时间长了自己看的时候都懵逼了。加必要的注释是程序员最最起码的修养。</p>
+<p>在功能开发到近一半的时候，邮件给测试负责人并抄送相关人员，告知此需求已开发过半，目的提醒其写需求的测试案例，以免延误测试。这一点根据你们开发流程定，建议如此。</p>
+<h2 id="功能测试"><a href="#功能测试" class="headerlink" title="功能测试"></a>功能测试</h2><p>开发完成就进入功能测试阶段了，或开发完某一接口（给前端调用的）开发人员就可以边开发边测了。</p>
+<h3 id="1、开发自测"><a href="#1、开发自测" class="headerlink" title="1、开发自测"></a>1、开发自测</h3><p>开发人员对自己开发的功能自己测试，主要测试接口的逻辑，入参出参是否正确等，边开发边测，前后端可以一起测。</p>
+<p>当整个功能都开发完成后，开发人员对该需求做整个流程的测试，针对可能出现问题的场景重点测试，当觉得本地测试的差不多的时候，可以把代码合并到测试环境再进行一次完整的测试。当觉得可以的时候，请小组组长发起走查代码，主要检查代码逻辑及代码规范等常见的显而易见的问题（毕竟旁观者清，自己写的代码可能看很久也发现不了问题），有问题就改一下，走查没问题了就可以提交给测试人员了。</p>
+<p>这里走查可以记录到代码走查记录里，主要写走查负责人，开发人员，走查时间，需求名，走查发现的问题，是否解决，何时解决等。通过走查代码可以防止同样的问题再发生，或大家互相引以为戒。</p>
+<h3 id="2、提交测试"><a href="#2、提交测试" class="headerlink" title="2、提交测试"></a>2、提交测试</h3><p>自测完毕后，邮件给测试负责人及相关人员，邮件说明某某需求已经合并到某某分支，或已发布在某某测试环境，现在提测本需求，及时测试等等…并说明涉及到的功能和系统，以及主要的测试点。<br>接下来你就配合测试人员啦，有bug改bug。</p>
+<h3 id="3、业务测试"><a href="#3、业务测试" class="headerlink" title="3、业务测试"></a>3、业务测试</h3><p>当测试人员测的差不多了，她们会邮件给业务人员。业务测完觉得没问题，那就等着上线吧。</p>
+<h2 id="需求上线"><a href="#需求上线" class="headerlink" title="需求上线"></a>需求上线</h2><p>需求上线前一定要检查你的代码完整性，把你的需求涉及到的SQL语句（如新增的系统参数，新增表结构等）、改动的配置文件（新增或修改配置）提交给运维。<strong>（重要！！！）</strong></p>
+<p>在需求上线的那天，你熬夜等上线（大部分都是晚上上线避开高峰期，也有的是灰度发布可以提前上）。当生产发完后，测试人员和业务人员会在生产验证，当业务说验收通过时，恭喜你可以回家了。如果有问题，你还得去查日志排查问题，然后解决，再上，再验证；如果问题太严重，你的代码就需要撤下来，暂时不上。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>上线完毕后，将本次需求所有有关的文档打包归档，提交至你们的文档库或者类似confluence这样的开发管理平台，如果没有这些东西或没要求做这些，可以自己保存下来，以便以后查阅。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>软件工程是一门学科，这里主要站在后端程序员的角度分享了自己总结的需求开发流程及开发过程中避免踩坑背锅的经验，可能写的有点粗略，或废话很多，可能有的公司没那么规范，也可能有的公司比这流程复杂多了，但是这里提到的<strong>需求分析、系统设计</strong>部分应该跟公司定的开发流程没关系，是开发人员自己的习惯和经验、自己给自己定的规范。还是那句话，我们程序员不甩锅也绝不无故背锅！</p>
+<hr>
+<p>【END】</p>
 
       
     </div>
     
     
     
-
+	<div>
+    
+        
+    
+	</div>
     
 
     
@@ -494,30 +519,30 @@
     
 
     
-	<div>
-	
-		
-<div style="text-align:center;color: #ccc;font-size:14px;">
------- 本文结束 ------</div>
-<br>
-<div style="border: 1px solid black">
-<div style="margin-left:10px">
-<span style="font-weight:blod">版权声明</span>
-<img src="此处填自己版权声明图片地址">
-<br>
-<p style="font-size: 10px;line-height: 30px"><a href="http://itwalking.top" style="color:#258FC6">itwalking</a> by <a href="http://itwalking.top" style="color:#258FC6">Walking</a> is licensed under a <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" style="color:#258FC6">Creative Commons BY-NC-ND 4.0 International License</a>.<br>
-由<a href="http://itwalking.top" style="color:#258FC6">Walking</a>创作并维护的<a href="http://itwalking.top" style="color:#258FC6">itwalking</a>博客采用<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" style="color:#258FC6">创作共用保留署名-非商业-禁止演绎4.0国际许可证</a>。<br>
-本文首发于<a href="http://itwalking.top" style="color:#258FC6">itwalking</a> 博客（ <a href="http://itwalking.top" style="color:#258FC6">http://itwalking.top</a> ），版权所有，侵权必究。</p>
-</div>
-</div>
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    walking
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="http://itwalking.top/20190324/写给即将入职的你-软件工程之需求开发流程.html" title="写给即将入职的你-软件工程之需求开发流程">http://itwalking.top/20190324/写给即将入职的你-软件工程之需求开发流程.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
 
+      </div>
+    
 	
-	</div>
     <footer class="post-footer">
       
         <div class="post-tags">
           
-            <a href="/tags/继承/" rel="tag"># 继承</a>
+            <a href="/tags/开发规范/" rel="tag"># 开发规范</a>
           
         </div>
       
@@ -530,18 +555,14 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/写给即将入职的你-软件工程之需求开发流程.html" rel="next" title="写给即将入职的你-软件工程之需求开发流程">
-                <i class="fa fa-chevron-left"></i> 写给即将入职的你-软件工程之需求开发流程
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/如何解释int-Integer为true？.html" rel="prev" title="如何解释int==Integer为true">
-                如何解释int==Integer为true <i class="fa fa-chevron-right"></i>
+              <a href="/20190523/Java类是如何默认继承Object的？.html" rel="prev" title="Java类是如何默认继承Object的？">
+                Java类是如何默认继承Object的？ <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -716,7 +737,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#继承自Object验证"><span class="nav-number">2.</span> <span class="nav-text">继承自Object验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#推测可能的原因"><span class="nav-number">3.</span> <span class="nav-text">推测可能的原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编译器处理"><span class="nav-number">3.1.</span> <span class="nav-text">编译器处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JVM处理"><span class="nav-number">3.2.</span> <span class="nav-text">JVM处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#验证结论"><span class="nav-number">4.</span> <span class="nav-text">验证结论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需求分析"><span class="nav-number">2.</span> <span class="nav-text">需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、快速通读"><span class="nav-number">2.1.</span> <span class="nav-text">1、快速通读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、抓重点、记疑问"><span class="nav-number">2.2.</span> <span class="nav-text">2、抓重点、记疑问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、答疑解惑"><span class="nav-number">2.3.</span> <span class="nav-text">3、答疑解惑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、准备材料"><span class="nav-number">2.4.</span> <span class="nav-text">4、准备材料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、工作记录"><span class="nav-number">2.5.</span> <span class="nav-text">5、工作记录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统设计"><span class="nav-number">3.</span> <span class="nav-text">系统设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统实现"><span class="nav-number">4.</span> <span class="nav-text">系统实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#功能测试"><span class="nav-number">5.</span> <span class="nav-text">功能测试</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、开发自测"><span class="nav-number">5.1.</span> <span class="nav-text">1、开发自测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、提交测试"><span class="nav-number">5.2.</span> <span class="nav-text">2、提交测试</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、业务测试"><span class="nav-number">5.3.</span> <span class="nav-text">3、业务测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需求上线"><span class="nav-number">6.</span> <span class="nav-text">需求上线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后"><span class="nav-number">7.</span> <span class="nav-text">最后</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
