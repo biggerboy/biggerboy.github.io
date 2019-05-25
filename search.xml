@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[Hexo博客Next主题优化配置记录]]></title>
     <url>%2F20190525%2FHexo%E5%8D%9A%E5%AE%A2Next%E4%B8%BB%E9%A2%98%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E4%BD%8D%E7%BD%AE%E8%AE%B0%E5%BD%95.html</url>
-    <content type="text"><![CDATA[这篇文章记录了使用Hexo Next主题搭建博客时的一些主题优化和配置的一些小方法，其中参考了很多博主的文章，在这里先谢谢各位，有参考到的文中会标明并给出链接。修改文章模板 scaffolds/,这个目录下有三个文件 123draft.mdpage.mdpost.md 这是三个模板文件当我们用hexo new “title”创建文章时，默认使用的是post.md，hexo new 后面可跟post,page,draft三个参数，默认使用post参数，可修改这三个文件的模板头信息。 给原创文章添加版权信息 最近，我发现我之前发表的原创文章，被别人到处转载，这些人转载时根本没有经过我的同意，没有询问过我，更没有在文章中注明转载链接、出处，令我很是气愤。 hexo next主题怎么添加版权信息呢？可以参考https://www.jianshu.com/p/93170e7413e9，看效果可以来我的网站http://itwalking.top 网站SEO优化 参考了这位大神的文章https://blog.csdn.net/qq_35661627/article/details/81267016 持续更新中…]]></content>
+    <content type="text"><![CDATA[这篇文章记录了使用Hexo Next主题搭建博客时的一些主题优化和配置的一些小方法，其中参考了很多博主的文章，在这里先谢谢各位，有参考到的文中会标明并给出链接。修改文章模板 scaffolds/,这个目录下有三个文件 123draft.mdpage.mdpost.md 这是三个模板文件当我们用hexo new “title”创建文章时，默认使用的是post.md，hexo new 后面可跟post,page,draft三个参数，默认使用post参数，可修改这三个文件的模板头信息。 给原创文章添加版权信息 最近，我发现我之前发表的原创文章，被别人到处转载，这些人转载时根本没有经过我的同意，没有询问过我，更没有在文章中注明转载链接、出处，令我很是气愤。 hexo next主题怎么添加版权信息呢？可以参考https://www.jianshu.com/p/93170e7413e9 看效果可以来我的网站http://itwalking.top 网站SEO优化 参考了这位大神的文章https://blog.csdn.net/qq_35661627/article/details/81267016 持续更新中…]]></content>
       <categories>
         <category>经验分享</category>
       </categories>
