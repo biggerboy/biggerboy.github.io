@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://itwalking.top/"/>
-  <updated>2019-05-25T04:31:56.610Z</updated>
+  <updated>2019-05-25T06:40:42.256Z</updated>
   <id>http://itwalking.top/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo博客Next主题,网页背景及页面进度条炫酷特效</title>
+    <link href="http://itwalking.top/20190525/Hexo%E5%8D%9A%E5%AE%A2Next%E4%B8%BB%E9%A2%98%E7%82%AB%E9%85%B7%E8%AE%BE%E7%BD%AE.html"/>
+    <id>http://itwalking.top/20190525/Hexo博客Next主题炫酷设置.html</id>
+    <published>2019-05-25T06:08:54.000Z</published>
+    <updated>2019-05-25T06:40:42.256Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;为你的Hexo博客增加炫酷的特效，这里我使用的是简约的Next主题，在这个主题下给网页加载时进度条特效，网页背景特效。
+    
+    </summary>
+    
+      <category term="技术教程" scheme="http://itwalking.top/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="hexo" scheme="http://itwalking.top/tags/hexo/"/>
+    
+      <category term="next" scheme="http://itwalking.top/tags/next/"/>
+    
+      <category term="特效" scheme="http://itwalking.top/tags/%E7%89%B9%E6%95%88/"/>
+    
+  </entry>
   
   <entry>
     <title>nginx重定向URI之rewrite和alias</title>
