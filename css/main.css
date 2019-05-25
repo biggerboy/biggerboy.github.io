@@ -1762,13 +1762,6 @@ pre .javascript .function {
     transform: rotateZ(-30deg);
   }
 }
-.post-copyright {
-  margin: 2em 0 0;
-  padding: 0.5em 1em;
-  border-left: 3px solid #ff1700;
-  background-color: #f9f9f9;
-  list-style: none;
-}
 .rtl.post-body p,
 .rtl.post-body a,
 .rtl.post-body h1,
@@ -1797,7 +1790,7 @@ pre .javascript .function {
   border-bottom: 1px solid #fc6423;
 }
 .my_post_copyright {
-  width: 85%;
+/*width: 85%;*/
   max-width: 45em;
   margin: 2.8em auto 0;
   padding: 0.5em 1em;
@@ -2011,7 +2004,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e39d93;
+  background: #256bff;
 }
 .links-of-blogroll {
   font-size: 13px;

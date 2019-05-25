@@ -89,7 +89,7 @@
 <meta property="og:description" content="背景引入最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/3/5/1694d4d40b5332af?w=796&h=166&f=png&s=15348">
-<meta property="og:updated_time" content="2019-05-24T10:10:24.576Z">
+<meta property="og:updated_time" content="2019-05-25T01:03:08.935Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何实现页面广告随时上下线、过期自动下线及到时自动上线">
 <meta name="twitter:description" content="背景引入最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。">
@@ -506,6 +506,38 @@
 	<div>
     
         
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+
+  <p><span>本文标题:</span>如何实现页面广告随时上下线、过期自动下线及到时自动上线</p>
+  <p><span>文章作者:</span>walking</p>
+  <p><span>发布时间:</span>2019年05月24日 - 18:03:38</p>
+  <p><span>最后更新:</span>2019年05月25日 - 09:03:08</p>
+  <p><span>原始链接:</span><a href="/20190524/如何实现页面广告随时上下线、过期自动下线及到时自动上线.html" title="如何实现页面广告随时上下线、过期自动下线及到时自动上线">http://itwalking.top/20190524/如何实现页面广告随时上下线、过期自动下线及到时自动上线.html</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="http://itwalking.top/20190524/如何实现页面广告随时上下线、过期自动下线及到时自动上线.html" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+        swal({   
+          title: "",   
+          text: '复制成功',   
+          html: false,
+          timer: 500,   
+          showConfirmButton: false
+        });
+      });
+    }));  
+</script>
+
     
 	</div>
     
@@ -542,24 +574,6 @@
     
 
     
-      <div>
-        <ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者：</strong>
-    walking
-  </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="http://itwalking.top/20190524/如何实现页面广告随时上下线、过期自动下线及到时自动上线.html" title="如何实现页面广告随时上下线、过期自动下线及到时自动上线">http://itwalking.top/20190524/如何实现页面广告随时上下线、过期自动下线及到时自动上线.html</a>
-  </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>
-    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
-  </li>
-</ul>
-
-      </div>
-    
 	
     <footer class="post-footer">
       
@@ -589,6 +603,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/20190525/Hexo博客Next主题常用设置位置记录.html" rel="prev" title="Hexo博客Next主题常用设置位置记录">
+                Hexo博客Next主题常用设置位置记录 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -672,7 +690,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -694,7 +712,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
