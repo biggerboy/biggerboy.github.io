@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://itwalking.top/"/>
-  <updated>2019-05-25T01:06:15.100Z</updated>
+  <updated>2019-05-25T01:13:37.491Z</updated>
   <id>http://itwalking.top/</id>
   
   <author>
@@ -17,15 +17,15 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hexo博客Next主题常用设置位置记录</title>
+    <title>Hexo博客Next主题优化配置记录</title>
     <link href="http://itwalking.top/20190525/Hexo%E5%8D%9A%E5%AE%A2Next%E4%B8%BB%E9%A2%98%E5%B8%B8%E7%94%A8%E8%AE%BE%E7%BD%AE%E4%BD%8D%E7%BD%AE%E8%AE%B0%E5%BD%95.html"/>
     <id>http://itwalking.top/20190525/Hexo博客Next主题常用设置位置记录.html</id>
     <published>2019-05-25T00:48:23.000Z</published>
-    <updated>2019-05-25T01:06:15.100Z</updated>
+    <updated>2019-05-25T01:13:37.491Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;这篇文章记录了使用Hexo Next主题搭建博客时的一些主题优化和配置的一些小方法。
+      &lt;p&gt;这篇文章记录了使用Hexo Next主题搭建博客时的一些主题优化和配置的一些小方法，其中参考了很多博主的文章，在这里先谢谢各位，有参考到的文中会标明并给出链接。
     
     </summary>
     
@@ -37,28 +37,6 @@
       <category term="博客" scheme="http://itwalking.top/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="next主题" scheme="http://itwalking.top/tags/next%E4%B8%BB%E9%A2%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>如何实现页面广告随时上下线、过期自动下线及到时自动上线</title>
-    <link href="http://itwalking.top/20190524/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E5%B9%BF%E5%91%8A%E9%9A%8F%E6%97%B6%E4%B8%8A%E4%B8%8B%E7%BA%BF%E3%80%81%E8%BF%87%E6%9C%9F%E8%87%AA%E5%8A%A8%E4%B8%8B%E7%BA%BF%E5%8F%8A%E5%88%B0%E6%97%B6%E8%87%AA%E5%8A%A8%E4%B8%8A%E7%BA%BF.html"/>
-    <id>http://itwalking.top/20190524/如何实现页面广告随时上下线、过期自动下线及到时自动上线.html</id>
-    <published>2019-05-24T10:03:38.000Z</published>
-    <updated>2019-05-25T01:03:08.935Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;背景引入&quot;&gt;&lt;a href=&quot;#背景引入&quot; class=&quot;headerlink&quot; title=&quot;背景引入&quot;&gt;&lt;/a&gt;背景引入&lt;/h2&gt;&lt;p&gt;最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。
-    
-    </summary>
-    
-      <category term="系统设计" scheme="http://itwalking.top/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
-    
-    
-      <category term="redis" scheme="http://itwalking.top/tags/redis/"/>
-    
-      <category term="系统设计" scheme="http://itwalking.top/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
@@ -85,32 +63,11 @@
   </entry>
   
   <entry>
-    <title>如何解释int==Integer为true</title>
-    <link href="http://itwalking.top/20190523/%E5%A6%82%E4%BD%95%E8%A7%A3%E9%87%8Aint-Integer%E4%B8%BAtrue%EF%BC%9F.html"/>
-    <id>http://itwalking.top/20190523/如何解释int-Integer为true？.html</id>
-    <published>2019-05-23T13:02:56.000Z</published>
-    <updated>2019-05-25T01:03:00.172Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;int-Integer为什么返回true&quot;&gt;&lt;a href=&quot;#int-Integer为什么返回true&quot; class=&quot;headerlink&quot; title=&quot;int==Integer为什么返回true&quot;&gt;&lt;/a&gt;int==Integer为什么返回true&lt;/h2&gt;&lt;p&gt;先看现象吧&lt;/p&gt;
-&lt;p&gt;执行下面的代码及输出结果：&lt;/p&gt;
-    
-    </summary>
-    
-      <category term="java基础" scheme="http://itwalking.top/categories/java%E5%9F%BA%E7%A1%80/"/>
-    
-    
-      <category term="包装类" scheme="http://itwalking.top/tags/%E5%8C%85%E8%A3%85%E7%B1%BB/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Java类是如何默认继承Object的？</title>
-    <link href="http://itwalking.top/20190523/Java%E7%B1%BB%E6%98%AF%E5%A6%82%E4%BD%95%E9%BB%98%E8%AE%A4%E7%BB%A7%E6%89%BFObject%E7%9A%84%EF%BC%9F.html"/>
-    <id>http://itwalking.top/20190523/Java类是如何默认继承Object的？.html</id>
-    <published>2019-05-23T12:54:28.000Z</published>
-    <updated>2019-05-25T00:38:45.466Z</updated>
+    <link href="http://itwalking.top/20190325/Java%E7%B1%BB%E6%98%AF%E5%A6%82%E4%BD%95%E9%BB%98%E8%AE%A4%E7%BB%A7%E6%89%BFObject%E7%9A%84%EF%BC%9F.html"/>
+    <id>http://itwalking.top/20190325/Java类是如何默认继承Object的？.html</id>
+    <published>2019-03-25T02:54:28.000Z</published>
+    <updated>2019-05-25T01:09:12.949Z</updated>
     
     <summary type="html">
     
@@ -142,6 +99,49 @@
     
     
       <category term="开发规范" scheme="http://itwalking.top/tags/%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何解释int==Integer为true</title>
+    <link href="http://itwalking.top/20190303/%E5%A6%82%E4%BD%95%E8%A7%A3%E9%87%8Aint-Integer%E4%B8%BAtrue%EF%BC%9F.html"/>
+    <id>http://itwalking.top/20190303/如何解释int-Integer为true？.html</id>
+    <published>2019-03-03T13:02:56.000Z</published>
+    <updated>2019-05-25T01:09:42.850Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;int-Integer为什么返回true&quot;&gt;&lt;a href=&quot;#int-Integer为什么返回true&quot; class=&quot;headerlink&quot; title=&quot;int==Integer为什么返回true&quot;&gt;&lt;/a&gt;int==Integer为什么返回true&lt;/h2&gt;&lt;p&gt;先看现象吧&lt;/p&gt;
+&lt;p&gt;执行下面的代码及输出结果：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="java基础" scheme="http://itwalking.top/categories/java%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="包装类" scheme="http://itwalking.top/tags/%E5%8C%85%E8%A3%85%E7%B1%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何实现页面广告随时上下线、过期自动下线及到时自动上线</title>
+    <link href="http://itwalking.top/20190224/%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E5%B9%BF%E5%91%8A%E9%9A%8F%E6%97%B6%E4%B8%8A%E4%B8%8B%E7%BA%BF%E3%80%81%E8%BF%87%E6%9C%9F%E8%87%AA%E5%8A%A8%E4%B8%8B%E7%BA%BF%E5%8F%8A%E5%88%B0%E6%97%B6%E8%87%AA%E5%8A%A8%E4%B8%8A%E7%BA%BF.html"/>
+    <id>http://itwalking.top/20190224/如何实现页面广告随时上下线、过期自动下线及到时自动上线.html</id>
+    <published>2019-02-24T10:03:38.000Z</published>
+    <updated>2019-05-25T01:10:08.357Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;背景引入&quot;&gt;&lt;a href=&quot;#背景引入&quot; class=&quot;headerlink&quot; title=&quot;背景引入&quot;&gt;&lt;/a&gt;背景引入&lt;/h2&gt;&lt;p&gt;最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。
+    
+    </summary>
+    
+      <category term="系统设计" scheme="http://itwalking.top/categories/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
+    
+    
+      <category term="redis" scheme="http://itwalking.top/tags/redis/"/>
+    
+      <category term="系统设计" scheme="http://itwalking.top/tags/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
