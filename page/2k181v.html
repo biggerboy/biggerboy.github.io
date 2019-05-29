@@ -74,7 +74,7 @@
 
 
 
-  <meta name="keywords" content="nginx,重定向">
+  <meta name="keywords" content="redis,系统设计,">
 
 
 
@@ -87,18 +87,20 @@
 
 
 
-<meta name="description" content="熟悉Nginx的同学都知道Nginx可以用来做负载均衡和反向代理，非常好用。做前后端分离也是非常的方便。今天我们就来说一下，用Nginx做前后端分离时如何做URI重定向？">
-<meta name="keywords" content="nginx,重定向">
+<meta name="description" content="背景引入最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。">
+<meta name="keywords" content="redis,系统设计">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginx重定向URI之rewrite和alias">
-<meta property="og:url" content="https://itwalking.top/2019/05/nginx重定向URI之rewrite和alias.html">
+<meta property="og:title" content="如何实现页面广告随时上下线、过期自动下线及到时自动上线">
+<meta property="og:url" content="https://itwalking.top/page/2k181v.html">
 <meta property="og:site_name" content="walking">
-<meta property="og:description" content="熟悉Nginx的同学都知道Nginx可以用来做负载均衡和反向代理，非常好用。做前后端分离也是非常的方便。今天我们就来说一下，用Nginx做前后端分离时如何做URI重定向？">
+<meta property="og:description" content="背景引入最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-25T14:22:13.846Z">
+<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/3/5/1694d4d40b5332af?w=796&h=166&f=png&s=15348">
+<meta property="og:updated_time" content="2019-05-29T05:15:57.784Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginx重定向URI之rewrite和alias">
-<meta name="twitter:description" content="熟悉Nginx的同学都知道Nginx可以用来做负载均衡和反向代理，非常好用。做前后端分离也是非常的方便。今天我们就来说一下，用Nginx做前后端分离时如何做URI重定向？">
+<meta name="twitter:title" content="如何实现页面广告随时上下线、过期自动下线及到时自动上线">
+<meta name="twitter:description" content="背景引入最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。">
+<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/3/5/1694d4d40b5332af?w=796&h=166&f=png&s=15348">
 
 
 
@@ -128,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://itwalking.top/2019/05/nginx重定向URI之rewrite和alias.html">
+  <link rel="canonical" href="https://itwalking.top/page/2k181v.html">
 
 
 
 
 
-  <title>nginx重定向URI之rewrite和alias | walking</title>
+  <title>如何实现页面广告随时上下线、过期自动下线及到时自动上线 | walking</title>
   
 
 
@@ -303,7 +305,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://itwalking.top/2019/05/nginx重定向URI之rewrite和alias.html">
+    <link itemprop="mainEntityOfPage" href="https://itwalking.top/page/2k181v.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="walking">
@@ -320,7 +322,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">nginx重定向URI之rewrite和alias</h2>
+          <h2 class="post-title" itemprop="name headline">如何实现页面广告随时上下线、过期自动下线及到时自动上线</h2>
         
 
         <div class="post-meta">
@@ -332,8 +334,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-25T12:27:31+08:00">
-                2019-05-25
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-24T18:03:38+08:00">
+                2019-02-24
               </time>
             
 
@@ -355,8 +357,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/IT技术/" itemprop="url" rel="index">
-                    <span itemprop="name">IT技术</span>
+                  <a href="/categories/系统设计/" itemprop="url" rel="index">
+                    <span itemprop="name">系统设计</span>
                   </a>
                 </span>
 
@@ -389,7 +391,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  698
+                  2.3k
                 </span>
               
 
@@ -405,7 +407,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  8
                 </span>
               
             </div>
@@ -426,41 +428,82 @@
       
 
       
-        <p>熟悉Nginx的同学都知道Nginx可以用来做负载均衡和反向代理，非常好用。做前后端分离也是非常的方便。今天我们就来说一下，用Nginx做前后端分离时如何做URI重定向？<a id="more"></a></p>
-<p>什么是URI重定向？</p>
-<p>就是说访问某一个或者某一规则URI时由Nginx的配置来决定重定向到另外一个或一类URI。</p>
-<p>有啥用呢？</p>
-<p>其中一个作用就是可以将请求映射到真实目录。具体啥意思呢？</p>
-<p>比如我们的URL是<br><code>http://www.abc.com/ITwalking/page/index.html</code><br>而index.html在我们的系统目录</p>
-<p><code>D:/resources/ITwalking/page/</code>下</p>
-<p>这时我们可以这样配置location:</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /ITwalking &#123;</span><br><span class="line">    root D:/resources/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="背景引入"><a href="#背景引入" class="headerlink" title="背景引入"></a>背景引入</h2><p>最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。<a id="more"></a></p>
+<h2 id="需求描述"><a href="#需求描述" class="headerlink" title="需求描述"></a>需求描述</h2><p>某些页面需要配置广告或活动宣传图，广告或活动需满足随时上下线、过期自动下线及到时自动上线。</p>
+<p>如：现在时间2019-2-22 16:16:13，要在支付完成页面配置领奖活动，活动要在2019-3-10 00:00:00准时上线，在2019-3-30 23:59:59结束活动。</p>
+<p>所以要的效果是，在活动上线前的任意时刻配置完活动后，页面到时间自动上线这个活动。<br>也可能会是其他的多个活动或广告，每个页面广告的个数可变，不同上下线时间可不同，其他页面也需要实现这样的功能，页面与页面之间的活动不一定一样。</p>
+<h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><p>需求简单的几句话，那么我们来具体的分析一下。</p>
+<h3 id="提取关键词"><a href="#提取关键词" class="headerlink" title="提取关键词"></a>提取关键词</h3><ul>
+<li>广告或活动宣传图</li>
+<li>随时上下线、过期自动下线及到时自动上线</li>
+<li>每个页面广告的个数可变</li>
+<li>不同广告上下线时间可不同</li>
+<li>页面与页面之间的活动不一定一样<h3 id="数据库分析"><a href="#数据库分析" class="headerlink" title="数据库分析"></a>数据库分析</h3>1、【广告或活动宣传图】</li>
+</ul>
+<p>要为不同页面设置不同的广告，有的页面广告可能一样，也就是广告会复用，所有要有<strong>广告表</strong>。</p>
+<p>2、【每个页面广告的个数可变】【不同广告上下线时间可不同】【页面与页面之间的活动不一定一样】</p>
+<p>页面可配置多个广告，所有要有<strong>页面配置表</strong>，以及广告和页面的关系表，即<strong>页面广告表</strong>。</p>
+<p><strong>页面配置表</strong>主要配置页面的广告个数，实现【每个页面广告的个数可变】，<strong>页面广告表</strong>主要配置页面的每个广告上下线时间，实现【不同广告上下线时间可不同】</p>
+<p>简单分析后得出如下表结构：广告表adv，页面配置表page_config，页面广告表page_adv<br><img src="https://user-gold-cdn.xitu.io/2019/3/5/1694d4d40b5332af?w=796&h=166&f=png&s=15348" alt="表结构"></p>
+<h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>这些页面配置的广告在一段时间内是不会变的，如果页面请求次数较多，广告查询次数就会很频繁，对数据库造成不必要的压力。所以可以引入缓存，降低数据库请求次数，缓解数据库压力。这里使用的Redis。</p>
+<p><strong>何时入缓存？</strong></p>
+<p>可以选择在服务启动时异步把已在上下线时间区间内的广告先加载至缓存，或选择在请求时取缓存，缓存内没有时再查库然后放缓存。缓存时间视情况而定。</p>
+<p>这里选择的是，项目启动时异步把符合条件的页面广告配置信息存入Redis，那些还没到指定时间的先不放Redis，等到访问页面加载广告时，先查Redis，若无则按条件（&gt;=nowtime）查库，查到后存Redis。</p>
+<p>在接口中拿到广告配置信息后，判断当前时间是否在配置的时间区间内，由于一个页面配置多个广告，不同广告时间也不同，所以要迭代，把符合的返回，有过期的就做标记，然后把整个页面的配置信息在Redis里删除。<br>（或者不选择在启动时加载，就在用户请求时加入缓存，但是下面的第1步的方法在刷新加载时会用到，故不能删）</p>
+<h2 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h2><h3 id="第1步、项目启动时先把页面广告配置信息存入Redis"><a href="#第1步、项目启动时先把页面广告配置信息存入Redis" class="headerlink" title="第1步、项目启动时先把页面广告配置信息存入Redis"></a>第1步、项目启动时先把页面广告配置信息存入Redis</h3><p>a、查询所有pageId</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT pageId FROM page_config page_adv WHERE nowtime&lt;=endtime AND GROUP BY pageId</span><br></pre></td></tr></table></figure>
 
-<p>用root这种方式配置的话，location后面的ITwalking是作为系统目录的，</p>
-<p>即D:/resources/下要有/ITwalking/page这层目录。</p>
-<p>这种配置是没问题的。</p>
-<p>但假如我们的D:/resources/下直接就是page，</p>
-<p>然后下面直接就是文件呢，中间没</p>
-<p>有/ITwalking这层目录，怎么办呢？你可能会想，新建个ITwalking把page及其中的文件移动到里面，然后用上面的配置不就可以了吗。</p>
-<p>可以，但没必要！</p>
-<p>非常没必要，因为我们的resources/page目录可能是从git上clone的，如果我们新建目录移动进去，那我们是不是修改了本地git仓库，那我们提交代码或更新时咋办？再移出去？多麻烦啊。(因为我们请求后台必须要加/ITwalking的)</p>
-<p>为了解决这个问题，我们可以用 Nginx 的 alias 指令或者 rewrite 指令。</p>
-<p>1、alias指令用来重置当前文件的目录，lacation后面的是虚拟目录</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">location /ITwalking/ &#123;</span><br><span class="line">    #使用 nginx alias 指令</span><br><span class="line">    alias D:/resources/page/;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>两个表内连接，得List&lt;pageId&gt;，得到的都是配置的有广告的并且广告还没过期的pageId。</p>
+<p>b、查询pegeId对应的广告图片及跳转链接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段名 FROM page_adv adv WHERE begintime&lt;=nowtime&lt;=endtime AND pageId=&#123;#pageId&#125;</span><br></pre></td></tr></table></figure>
 
-<p>这样，当URL为</p>
-<p><code>http://www.abc.com/ITwalking/page/index.html</code>时，</p>
-<p>会将此请求重定向到</p>
-<p><code>D:/resources/page/index.html</code></p>
-<p>此时的ITwalking是虚拟目录，对此目录的访问重置到</p>
-<p>D:/resources/page/</p>
-<p>2、rewrite重定向，需要配合root指令一起使用</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location /ITwalking/ &#123;</span><br><span class="line">    root D:/resources/page/;</span><br><span class="line">    #使用 nginx rewrite 指令</span><br><span class="line">    rewrite ^/ITwalking/(.*?)$ /$1 break;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后把查到的配置信息List&lt;adv&gt;（为空时不做操作），以pageId为KEY放入缓存。</p>
+<h3 id="第2步、给前端写接口查询页面广告"><a href="#第2步、给前端写接口查询页面广告" class="headerlink" title="第2步、给前端写接口查询页面广告"></a>第2步、给前端写接口查询页面广告</h3><p>按标准的控制层，业务层，数据访问层写，第一步中的逻辑就是在业务层完成的。</p>
+<p><strong>控制层：</strong></p>
+<p>控制层接参pageId，调用业务层查询对应页面配置的广告信息，判空，直接返回状态码0，即无广告前端不展示。</p>
+<p>不为空就根据业务逻辑处理数据（如img的URL加域名），然后返回状态码1，前端展示广告。<br>这里控制层还可以加逻辑，迭代广告list，把当前时间在广告起始时间内的返回，不在的不返回，并且只要有一个广告过期，就把这个页面的广告list缓存清掉。这个逻辑是把过期的清掉。</p>
+<p><strong>业务层：</strong></p>
+<p>先取缓存，没有再查库判断不为空（本页面配置的有广告），放入缓存（pageId为KEY），然后返回。</p>
+<p><strong>数据访问层：</strong></p>
+<p>SQL:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段名 FROM page_config adv page_adv WHERE begintime&lt;=nowtime&lt;=endtime AND pageId=#&#123;pageId&#125;</span><br></pre></td></tr></table></figure>
 
-<p>这两种效果是一样的。^/ITwalking/(.*?)$是正则，表示满足这个正则的请求，都重定向到D:/resources/page/下，/$1重定向的地址，break终止匹配。</p>
-<p>rewrite是针对http请求的，它里面的路径是网址里面的地址，rewrite做的是地址间的转换。<br>而root和alias是系统文件路径的设置。<br>区别是，root用来设置根目录，而alias用来重置当前文件的目录。</p>
-<p>关于rewrite和alias重定向的例子先说到这，这也是我实际遇到的，这两种方式完美的满足了我的需求。</p>
-<p>二者的详细用法，后续的文章会详细讲解。</p>
+<p>三表联查，根据pageId查询当前页面配置的广告活动信息（已在广告活动时间内）</p>
+<h3 id="第3步、刷新加载"><a href="#第3步、刷新加载" class="headerlink" title="第3步、刷新加载"></a>第3步、刷新加载</h3><p><strong>为什么使用刷新加载？</strong></p>
+<p>因为有这样的场景：给页面A配置了一个广告（当前时间在广告的起始时间内），那么这个页面的广告已经在缓存里了，假如此时A页面要新加一个广告，在后台配置后如果不做其他操作，这个广告不会显示（假设缓存时间较长，为一天），因为库更新了，缓存没有同步更新。</p>
+<p><strong>解决方案</strong></p>
+<p>使用Redis的发布订阅机制实现缓存的刷新加载，使新配置的广告及时能够显示。<br>刷新加载的回调方法即第1步中的方法。</p>
+<h2 id="进一步优化"><a href="#进一步优化" class="headerlink" title="进一步优化"></a>进一步优化</h2><p>想一想，目前的实现存在什么问题？</p>
+<p><strong>存在的问题</strong></p>
+<p>假如有页面需要配置广告，但是还没有配（前端已经开发完上线，每次都会调接口查广告信息），那么数据库肯定查不到，缓存也没有。如果这个页面访问量很大，那么缓存没命中就查库，这样对库的压力就会很大，这就是缓存穿透，请求上来了很容易击垮数据库。那怎么办呢？</p>
+<p><strong>解决方案</strong></p>
+<p>当页面没有配置广告时，在缓存存标志，查询时先看标志，在决定是否往下走。</p>
+<p><strong>具体方案</strong></p>
+<p>这时，上面的第1步就要改了。</p>
+<p>1、首先改第1步的步骤a的SQL，把所有的pageId都查询出来。</p>
+<p>使用左连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT pageId FROM page_config LEFT JOIN page_adv ON ...  GROUP BY pageId</span><br></pre></td></tr></table></figure>
+
+<p>或者干脆查page_config</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT pageId FROM page_config</span><br></pre></td></tr></table></figure>
+
+<p>目的是把已在page_config表中配置，但关系表中page_adv未配置广告的pageId也查出来，这样才能给未配置广告的pageId在缓存里放标志</p>
+<p>2、第1步的步骤b的SQL改为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段名 FROM page_adv adv WHERE nowtime&lt;=endtime AND pageId=&#123;#pageId&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后把查到的配置信息放入缓存之前<font color="#ff9c00">判断【为空时的不做操作】改为【为空时存入一个标志】假如这个标志KEY为pageId+”_EMPTY_FLAG”,value为”DB_IS_NULL”</font></p>
+<p><strong>为什么只判断小于结束时间</strong></p>
+<p>因为如果该页面配置的广告开始时间大于当前时间，那么这个是查不到的，会被处理为DATABASE_IS_NULL，如果在这个标志还没失效之前就到了配置的开始时间了，那么这个广告不会被展示。所有要让未到开始时间的也放入缓存，然后让控制层去判断在不在时间区间。</p>
+<p>3、所以要在第2步也修改一下</p>
+<p>在业务层里取缓存中的广告列表之前，先从缓存取pageId+”EMPTY_FLAG”的value判断为”DB_IS_NULL”直接返回空，这样就能解决缓存穿透的问题了。</p>
+<p>继续修改第2步的业务层，查库的SQL同样要改：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT 字段名 FROM page_config adv page_adv WHERE nowtime&lt;=endtime AND pageId=#&#123;pageId&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后判断为空的话，同上面的黄字那样处理。</p>
+<p>4、最后，第3步的刷新加载调的是第1步的方法，不用改。<br><br><br><br><br>当然这个缓存穿透的优化方案只是其中一种。还可以这样：</p>
+<p>1、控制层拦截：根据pageId查询page_adv表，查不到说明没配置，直接返回。</p>
+<p>2、page_config 表增加字段，表示当前页面已经配置的广告个数，默认0，每配置一个该字段加1，把大于0的pageId缓存起来，调接口时前判断在不在缓存里。</p>
+<h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><p>实现这个功能并不是太难，主要用到了Redis的缓存技术，Redis发布订阅机制，关键就是细节的把控，以及缓存穿透的处理。</p>
 
       
     </div>
@@ -478,12 +521,12 @@
   <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
   <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
 
-  <p><span>本文标题:</span>nginx重定向URI之rewrite和alias</p>
+  <p><span>本文标题:</span>如何实现页面广告随时上下线、过期自动下线及到时自动上线</p>
   <p><span>文章作者:</span>walking</p>
-  <p><span>发布时间:</span>2019年05月25日 - 12:27:31</p>
-  <p><span>最后更新:</span>2019年05月25日 - 22:22:13</p>
-  <p><span>原始链接:</span><a href="/2019/05/nginx重定向URI之rewrite和alias.html" title="nginx重定向URI之rewrite和alias">https://itwalking.top/2019/05/nginx重定向URI之rewrite和alias.html</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://itwalking.top/2019/05/nginx重定向URI之rewrite和alias.html" aria-label="复制成功！"></i></span>
+  <p><span>发布时间:</span>2019年02月24日 - 18:03:38</p>
+  <p><span>最后更新:</span>2019年05月29日 - 13:15:57</p>
+  <p><span>原始链接:</span><a href="/page/2k181v.html" title="如何实现页面广告随时上下线、过期自动下线及到时自动上线">https://itwalking.top/page/2k181v.html</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://itwalking.top/page/2k181v.html" aria-label="复制成功！"></i></span>
   </p>
   <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
 </div>
@@ -543,9 +586,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/nginx/" rel="tag"># nginx</a>
+            <a href="/tags/redis/" rel="tag"># redis</a>
           
-            <a href="/tags/前后端分离/" rel="tag"># 前后端分离</a>
+            <a href="/tags/系统设计/" rel="tag"># 系统设计</a>
           
         </div>
       
@@ -573,8 +616,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/Hexo博客Next主题常用设置位置记录.html" rel="next" title="Hexo博客Next主题优化配置记录">
-                <i class="fa fa-chevron-left"></i> Hexo博客Next主题优化配置记录
+              <a href="/page/a123d3.html" rel="next" title="关于java抽象类抽象方法">
+                <i class="fa fa-chevron-left"></i> 关于java抽象类抽象方法
               </a>
             
           </div>
@@ -583,8 +626,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/Hexo博客Next主题炫酷设置.html" rel="prev" title="Hexo博客Next主题,网页背景及页面进度条炫酷特效">
-                Hexo博客Next主题,网页背景及页面进度条炫酷特效 <i class="fa fa-chevron-right"></i>
+              <a href="/page/h3s09b.html" rel="prev" title="如何向女朋友解释int==Integer为true">
+                如何向女朋友解释int==Integer为true <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -637,8 +680,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -735,6 +787,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景引入"><span class="nav-number">1.</span> <span class="nav-text">背景引入</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需求描述"><span class="nav-number">2.</span> <span class="nav-text">需求描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需求分析"><span class="nav-number">3.</span> <span class="nav-text">需求分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提取关键词"><span class="nav-number">3.1.</span> <span class="nav-text">提取关键词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据库分析"><span class="nav-number">3.2.</span> <span class="nav-text">数据库分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#思考"><span class="nav-number">3.3.</span> <span class="nav-text">思考</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体实现"><span class="nav-number">4.</span> <span class="nav-text">具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第1步、项目启动时先把页面广告配置信息存入Redis"><span class="nav-number">4.1.</span> <span class="nav-text">第1步、项目启动时先把页面广告配置信息存入Redis</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2步、给前端写接口查询页面广告"><span class="nav-number">4.2.</span> <span class="nav-text">第2步、给前端写接口查询页面广告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第3步、刷新加载"><span class="nav-number">4.3.</span> <span class="nav-text">第3步、刷新加载</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进一步优化"><span class="nav-number">5.</span> <span class="nav-text">进一步优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结："><span class="nav-number">6.</span> <span class="nav-text">总结：</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
