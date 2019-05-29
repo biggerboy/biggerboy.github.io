@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://itwalking.top/"/>
-  <updated>2019-05-29T05:17:35.056Z</updated>
+  <updated>2019-05-29T13:41:22.633Z</updated>
   <id>https://itwalking.top/</id>
   
   <author>
@@ -15,6 +15,22 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>修改Hexo自动生成的HTML文件名</title>
+    <link href="https://itwalking.top/page/m29w17.html"/>
+    <id>https://itwalking.top/page/m29w17.html</id>
+    <published>2019-05-29T09:49:53.000Z</published>
+    <updated>2019-05-29T13:41:22.633Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;导读&quot;&gt;&lt;a href=&quot;#导读&quot; class=&quot;headerlink&quot; title=&quot;导读&quot;&gt;&lt;/a&gt;导读&lt;/h2&gt;&lt;p&gt;我们在使用Hexo框架生成静态博客时，其实是将你写好的.md文件输出成HTML文件进行渲染，其中HTML的文件名称就是.md的文件名称。
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Hexo博客Next主题,网页背景及页面进度条炫酷特效</title>
