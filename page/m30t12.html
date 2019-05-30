@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="walking">
 <meta property="og:description" content="关于NexT的主题的一些基本设置，参考的是这篇文章https://www.jianshu.com/p/3a05351a37dc，其中对于不蒜子的统计我做了一些小的修改，使他更加灵活。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-30T05:10:38.090Z">
+<meta property="og:updated_time" content="2019-05-30T06:12:21.344Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo博客NexT主题不蒜子统计">
 <meta name="twitter:description" content="关于NexT的主题的一些基本设置，参考的是这篇文章https://www.jianshu.com/p/3a05351a37dc，其中对于不蒜子的统计我做了一些小的修改，使他更加灵活。">
@@ -397,7 +397,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  403
+                  622
                 </span>
               
 
@@ -413,7 +413,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -444,7 +444,12 @@
 <p>还有对每篇文章的阅读量统计，也是使用的配置文件变量，如下：</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#123;% if theme.busuanzi_count.page_pv %&#125;</span><br><span class="line">	<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"post-meta-divider"</span>&gt;</span>|<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">"busuanzi_value_page_pv"</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span>次阅读</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
 
-<p>用的是主题配置文件的变量，不是原文中那样设置形参，调用是传参，这样不够灵活，用配置文件更加方便</p>
+<p>用的是主题配置文件的变量，不是原文中那样设置形参，调用是传参，这样不够灵活，用配置文件更加方便。</p>
+<p>另外我发现不蒜子对于每篇文章的阅读量统计好像不是那么好，有时候过一段时间访问这篇文章的时候发现阅读量又变成啦1，访客量到时没有问题。于是我就换成了leanCould来统计每篇文章的阅读量。NexT主题也支持这个。</p>
+<p>首先在leanCould注册账号，然后创建应用，在应用下创建class命名为Counter（必须），然后在设置-安全中心-web安全域名里把你的网站域名写上，保存，然后在设置-应用key里复制app-id和app-key，复制到NexT的主题配置文件里,找到如下配置复制进去就OK了。</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">leancloud_visitors:</span></span><br><span class="line"><span class="attr">  enable:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  app_id:</span> </span><br><span class="line"><span class="attr">  app_key:</span></span><br></pre></td></tr></table></figure>
+
+<p>执行hexo g，hexo d访问你的网站看一下吧。当然你可以在这个平台手动修改阅读量。</p>
 
       
     </div>
@@ -457,15 +462,15 @@
 <div class="my_post_copyright">
   <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
   
-  <!-- JS库 sweetalert 可修改路径 -->
-  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
-  <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+  <!-- JS库 sweetalert 可修改路径 
+  <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>-->
+  <script src="/js/src/sweetalert.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/sweetalert.css">
 
   <p><span>本文标题:</span>Hexo博客NexT主题不蒜子统计</p>
   <p><span>文章作者:</span>walking</p>
   <p><span>发布时间:</span>2019年05月30日 - 12:54:32</p>
-  <p><span>最后更新:</span>2019年05月30日 - 13:10:38</p>
+  <p><span>最后更新:</span>2019年05月30日 - 14:12:21</p>
   <p><span>原始链接:</span><a href="/page/m30t12.html" title="Hexo博客NexT主题不蒜子统计">https://itwalking.top/page/m30t12.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://itwalking.top/page/m30t12.html" aria-label="复制成功！"></i></span>
   </p>
