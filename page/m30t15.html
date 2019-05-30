@@ -87,18 +87,18 @@
 
 
 
-<meta name="description" content="在你的博客里加版权信息是很必要的，因为笔者最近发现有很多网站或个人转发笔者的博文，其中还有的标着原创，真是让人恼火，辛辛苦苦的原创文章被别人未征得同意的情况下转载，转就转了，还标着原创！真是够了！ 所以打算在文章中添加版权信息，有的添加版权信息的插件，是在文章末尾添加，并不是文章的内容部分，这样再被一些爬虫自动抓取文章转载的时候，版权信息是抓不到的。所以必须要让版权信息成为文章的一部分。其次，我们">
+<meta name="description" content="在你的博客里加版权信息是很必要的，因为笔者最近发现有很多网站或个人转发笔者的博文，其中还有的标着原创，真是让人恼火，辛辛苦苦的原创文章被别人未征得同意的情况下转载，转就转了，还标着原创！真是够了！">
 <meta name="keywords" content="hexo,统计">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo为文章添加版权信息">
 <meta property="og:url" content="https://itwalking.top/page/m30t15.html">
 <meta property="og:site_name" content="walking">
-<meta property="og:description" content="在你的博客里加版权信息是很必要的，因为笔者最近发现有很多网站或个人转发笔者的博文，其中还有的标着原创，真是让人恼火，辛辛苦苦的原创文章被别人未征得同意的情况下转载，转就转了，还标着原创！真是够了！ 所以打算在文章中添加版权信息，有的添加版权信息的插件，是在文章末尾添加，并不是文章的内容部分，这样再被一些爬虫自动抓取文章转载的时候，版权信息是抓不到的。所以必须要让版权信息成为文章的一部分。其次，我们">
+<meta property="og:description" content="在你的博客里加版权信息是很必要的，因为笔者最近发现有很多网站或个人转发笔者的博文，其中还有的标着原创，真是让人恼火，辛辛苦苦的原创文章被别人未征得同意的情况下转载，转就转了，还标着原创！真是够了！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-30T08:10:08.310Z">
+<meta property="og:updated_time" content="2019-05-30T09:01:13.518Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo为文章添加版权信息">
-<meta name="twitter:description" content="在你的博客里加版权信息是很必要的，因为笔者最近发现有很多网站或个人转发笔者的博文，其中还有的标着原创，真是让人恼火，辛辛苦苦的原创文章被别人未征得同意的情况下转载，转就转了，还标着原创！真是够了！ 所以打算在文章中添加版权信息，有的添加版权信息的插件，是在文章末尾添加，并不是文章的内容部分，这样再被一些爬虫自动抓取文章转载的时候，版权信息是抓不到的。所以必须要让版权信息成为文章的一部分。其次，我们">
+<meta name="twitter:description" content="在你的博客里加版权信息是很必要的，因为笔者最近发现有很多网站或个人转发笔者的博文，其中还有的标着原创，真是让人恼火，辛辛苦苦的原创文章被别人未征得同意的情况下转载，转就转了，还标着原创！真是够了！">
 
 
 
@@ -397,7 +397,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  616
+                  629
                 </span>
               
 
@@ -434,42 +434,30 @@
       
 
       
-        <p>在你的博客里加版权信息是很必要的，因为笔者最近发现有很多网站或个人转发笔者的博文，其中还有的标着原创，真是让人恼火，辛辛苦苦的原创文章被别人未征得同意的情况下转载，转就转了，还标着原创！真是够了！</p>
+        <p>在你的博客里加版权信息是很必要的，因为笔者最近发现有很多网站或个人转发笔者的博文，其中还有的标着原创，真是让人恼火，辛辛苦苦的原创文章被别人未征得同意的情况下转载，转就转了，还标着原创！真是够了！<a id="more"></a></p>
 <p>所以打算在文章中添加版权信息，有的添加版权信息的插件，是在文章末尾添加，并不是文章的内容部分，这样再被一些爬虫自动抓取文章转载的时候，版权信息是抓不到的。所以必须要让版权信息成为文章的一部分。其次，我们也要把文章的链接，即文章在自己网站访问时的链接给加上，还有作者、标题、发布时间等。</p>
 <p>以NexT主题为例</p>
 <p>首先我们要准备版权信息模板，在next\layout_macro目录下创建my-copyright.swig文件，内容如下：</p>
 <pre><code>{% if page.copyright %}
     <div class="my_post_copyright">
-      <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-      
-      <!-- JS库 sweetalert 可修改路径 -->
-      <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
-      <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
-      <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+    <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
     
-      <p><span>本文标题:</span>{{ page.title }}</p>
-      <p><span>文章作者:</span>{{ theme.author }}</p>
-      <p><span>发布时间:</span>{{ page.date.format("YYYY年MM月DD日 - HH:mm:ss") }}</p>
-      <p><span>最后更新:</span>{{ page.updated.format("YYYY年MM月DD日 - HH:mm:ss") }}</p>
-      <p><span>原始链接:</span><a href="{{ url_for(page.path) }}" title="{{ page.title }}">{{ page.permalink }}</a>
-    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="{{ page.permalink }}" aria-label="复制成功！"></i></span>
-      </p>
-      <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
-    </div>
-    <script> 
-    var clipboard = new Clipboard('.fa-clipboard');
-    clipboard.on('success', $(function(){
-      $(".fa-clipboard").click(function(){
-    swal({   
-      title: "",   
-      text: '复制成功',   
-      html: false,
-      timer: 500,   
-      showConfirmButton: false
-    });
-      });
-    }));  
-    </script>
+    <!-- JS库 sweetalert 可修改路径 -->
+    <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+    <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+    
+    <p><span>本文标题:</span>{{ page.title }}
+    </p>
+    <p><span>文章作者:</span>{{ theme.author }}
+    </p>
+    <p><span>发布时间:</span>{{ page.date.format("YYYY年MM月DD日 - HH:mm:ss") }}</p>
+    <p><span>最后更新:</span>{{ page.updated.format("YYYY年MM月DD日 - HH:mm:ss") }}</p>
+    <p><span>原始链接:</span><a href="{{ url_for(page.path) }}" title="{{ page.title }}">{{ page.permalink }}</a>
+    	<span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="{{ page.permalink }}" aria-label="复制成功！"></i></span>
+    </p>
+    <p><span>许可协议:</span><i class="fa fa-creative-commons">署名-非商业性使用-禁止演绎 4.0 国际
+    <script var clipboard="new" clipboard('.fa-clipboard'); clipboard.on('success', $(function(){ $(".fa-clipboard").click(function(){ swal({ title: "", text: '复制成功', html: false, timer: 500, showconfirmbutton: false }); })); < script>
     {% endif %}</code></pre><p>其中，这三个文件是http协议的，如果你的网站是https的是访问不到的</p>
 <pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js&quot;&gt;&lt;/script&gt;
@@ -481,9 +469,9 @@
     {% if not is_index %}
 	    {% include 'my-copyright.swig' %}
 	    {% endif %}
-&lt;/div&gt; </code></pre><p>保存，执行hexo g和hexo d打开你的博客验证一下就OK了。</p>
+&lt;/div&gt; </code></pre><p>保存，<br>在执行hexo g和hexo d前要确保你的文章开头添加属性<code>copyright: true</code>，添加版权的代码才会有效，你可以吧这个属性添加到文章模板里，然后执行完命令后，打开你的博客验证一下就OK了。</p>
 <p>可以来我的网站看效果，<a href="https://itwalking.top">https://itwalking.top</a></p>
-
+</script></i></p></div></code></pre>
       
     </div>
     
@@ -503,7 +491,7 @@
   <p><span>本文标题:</span>Hexo为文章添加版权信息</p>
   <p><span>文章作者:</span>walking</p>
   <p><span>发布时间:</span>2019年05月30日 - 15:45:32</p>
-  <p><span>最后更新:</span>2019年05月30日 - 16:10:08</p>
+  <p><span>最后更新:</span>2019年05月30日 - 17:01:13</p>
   <p><span>原始链接:</span><a href="/page/m30t15.html" title="Hexo为文章添加版权信息">https://itwalking.top/page/m30t15.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://itwalking.top/page/m30t15.html" aria-label="复制成功！"></i></span>
   </p>
