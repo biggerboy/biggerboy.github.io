@@ -303,6 +303,240 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://itwalking.top/page/m30t15.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="walking">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/bitbug_favicon 128-128.ico">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="walking">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/page/m30t15.html" itemprop="url">Hexo为文章添加版权信息</a></h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-30T15:45:32+08:00">
+                2019-05-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术教程/" itemprop="url" rel="index">
+                    <span itemprop="name">技术教程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/page/m30t15.html" class="leancloud_visitors" data-flag-title="Hexo为文章添加版权信息">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+		  
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  616
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在你的博客里加版权信息是很必要的，因为笔者最近发现有很多网站或个人转发笔者的博文，其中还有的标着原创，真是让人恼火，辛辛苦苦的原创文章被别人未征得同意的情况下转载，转就转了，还标着原创！真是够了！</p>
+<p>所以打算在文章中添加版权信息，有的添加版权信息的插件，是在文章末尾添加，并不是文章的内容部分，这样再被一些爬虫自动抓取文章转载的时候，版权信息是抓不到的。所以必须要让版权信息成为文章的一部分。其次，我们也要把文章的链接，即文章在自己网站访问时的链接给加上，还有作者、标题、发布时间等。</p>
+<p>以NexT主题为例</p>
+<p>首先我们要准备版权信息模板，在next\layout_macro目录下创建my-copyright.swig文件，内容如下：</p>
+<pre><code>{% if page.copyright %}
+    <div class="my_post_copyright">
+      <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+      
+      <!-- JS库 sweetalert 可修改路径 -->
+      <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
+      <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
+    
+      <p><span>本文标题:</span>{{ page.title }}</p>
+      <p><span>文章作者:</span>{{ theme.author }}</p>
+      <p><span>发布时间:</span>{{ page.date.format("YYYY年MM月DD日 - HH:mm:ss") }}</p>
+      <p><span>最后更新:</span>{{ page.updated.format("YYYY年MM月DD日 - HH:mm:ss") }}</p>
+      <p><span>原始链接:</span><a href="{{ url_for(page.path) }}" title="{{ page.title }}">{{ page.permalink }}</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="{{ page.permalink }}" aria-label="复制成功！"></i></span>
+      </p>
+      <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+    </div>
+    <script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    clipboard.on('success', $(function(){
+      $(".fa-clipboard").click(function(){
+    swal({   
+      title: "",   
+      text: '复制成功',   
+      html: false,
+      timer: 500,   
+      showConfirmButton: false
+    });
+      });
+    }));  
+    </script>
+    {% endif %}</code></pre><p>其中，这三个文件是http协议的，如果你的网站是https的是访问不到的</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css&quot;&gt;</code></pre><p>那么久先在浏览器访问这三个文件，自己保存到本地的NexT主题的资源目录下，再把my-copyright.swig文件里改成你本地的路径就好了。</p>
+<p>这都弄好之后，我们就可以在必要的地方引入模板了。在哪呢？</p>
+<p>在next\layout_macro目录下的post.swig里加，具体在哪个位置呢？先打开它，找到这个地方：</p>
+<p>在其后面添加如下代码：</p>
+<pre><code>&lt;div&gt;
+    {% if not is_index %}
+	    {% include 'my-copyright.swig' %}
+	    {% endif %}
+&lt;/div&gt; </code></pre><p>保存，执行hexo g和hexo d打开你的博客验证一下就OK了。</p>
+<p>可以来我的网站看效果，<a href="https://itwalking.top">https://itwalking.top</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+	<div>
+    
+	</div>
+    
+
+    
+
+    
+	
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://itwalking.top/page/m30t12.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1028,196 +1262,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://itwalking.top/page/a20192.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="walking">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/bitbug_favicon 128-128.ico">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="walking">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/page/a20192.html" itemprop="url">Hexo博客Next主题优化配置记录</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-25T08:48:23+08:00">
-                2019-05-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/经验分享/" itemprop="url" rel="index">
-                    <span itemprop="name">经验分享</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/page/a20192.html" class="leancloud_visitors" data-flag-title="Hexo博客Next主题优化配置记录">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数&#58;</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-		  
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  292
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>这篇文章记录了使用Hexo Next主题搭建博客时的一些主题优化和配置的一些小方法，其中参考了很多博主的文章，在这里先谢谢各位，有参考到的文中会标明并给出链接。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/page/a20192.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-	<div>
-    
-	</div>
-    
-
-    
-
-    
-	
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1270,7 +1314,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
