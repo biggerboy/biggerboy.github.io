@@ -95,7 +95,7 @@
 <meta property="og:site_name" content="walking">
 <meta property="og:description" content="在你的博客里加版权信息是很必要的，因为笔者最近发现有很多网站或个人转发笔者的博文，其中还有的标着原创，真是让人恼火，辛辛苦苦的原创文章被别人未征得同意的情况下转载，转就转了，还标着原创！真是够了！">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-30T09:01:13.518Z">
+<meta property="og:updated_time" content="2019-05-30T13:43:57.816Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo为文章添加版权信息">
 <meta name="twitter:description" content="在你的博客里加版权信息是很必要的，因为笔者最近发现有很多网站或个人转发笔者的博文，其中还有的标着原创，真是让人恼火，辛辛苦苦的原创文章被别人未征得同意的情况下转载，转就转了，还标着原创！真是够了！">
@@ -397,7 +397,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  629
+                  981
                 </span>
               
 
@@ -413,7 +413,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  2
+                  4
                 </span>
               
             </div>
@@ -438,40 +438,23 @@
 <p>所以打算在文章中添加版权信息，有的添加版权信息的插件，是在文章末尾添加，并不是文章的内容部分，这样再被一些爬虫自动抓取文章转载的时候，版权信息是抓不到的。所以必须要让版权信息成为文章的一部分。其次，我们也要把文章的链接，即文章在自己网站访问时的链接给加上，还有作者、标题、发布时间等。</p>
 <p>以NexT主题为例</p>
 <p>首先我们要准备版权信息模板，在next\layout_macro目录下创建my-copyright.swig文件，内容如下：</p>
-<pre><code>{% if page.copyright %}
-    <div class="my_post_copyright">
-    <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-    
-    <!-- JS库 sweetalert 可修改路径 -->
-    <script type="text/javascript" src="http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"></script>
-    <script src="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css">
-    
-    <p><span>本文标题:</span>{{ page.title }}
-    </p>
-    <p><span>文章作者:</span>{{ theme.author }}
-    </p>
-    <p><span>发布时间:</span>{{ page.date.format("YYYY年MM月DD日 - HH:mm:ss") }}</p>
-    <p><span>最后更新:</span>{{ page.updated.format("YYYY年MM月DD日 - HH:mm:ss") }}</p>
-    <p><span>原始链接:</span><a href="{{ url_for(page.path) }}" title="{{ page.title }}">{{ page.permalink }}</a>
-    	<span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="{{ page.permalink }}" aria-label="复制成功！"></i></span>
-    </p>
-    <p><span>许可协议:</span><i class="fa fa-creative-commons">署名-非商业性使用-禁止演绎 4.0 国际
-    <script var clipboard="new" clipboard('.fa-clipboard'); clipboard.on('success', $(function(){ $(".fa-clipboard").click(function(){ swal({ title: "", text: '复制成功', html: false, timer: 500, showconfirmbutton: false }); })); < script>
-    {% endif %}</code></pre><p>其中，这三个文件是http协议的，如果你的网站是https的是访问不到的</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot; src=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js&quot;&gt;&lt;/script&gt;
-&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css&quot;&gt;</code></pre><p>那么久先在浏览器访问这三个文件，自己保存到本地的NexT主题的资源目录下，再把my-copyright.swig文件里改成你本地的路径就好了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if page.copyright %&#125;</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"my_post_copyright"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- JS库 sweetalert 可修改路径 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>本文标题:<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#123;&#123; page.title &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>文章作者:<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#123;&#123; theme.author &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>发布时间:<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#123;&#123; page.date.format("YYYY年MM月DD日 - HH:mm:ss") &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>最后更新:<span class="tag">&lt;/<span class="name">span</span>&gt;</span>&#123;&#123; page.updated.format("YYYY年MM月DD日 - HH:mm:ss") &#125;&#125;<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>原始链接:<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"&#123;&#123; url_for(page.path) &#125;&#125;"</span> <span class="attr">title</span>=<span class="string">"&#123;&#123; page.title &#125;&#125;"</span>&gt;</span>&#123;&#123; page.permalink &#125;&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"copy-path"</span> <span class="attr">title</span>=<span class="string">"点击复制文章链接"</span>&gt;</span><span class="tag">&lt;<span class="name">i</span> <span class="attr">class</span>=<span class="string">"fa fa-clipboard"</span> <span class="attr">data-clipboard-text</span>=<span class="string">"&#123;&#123; page.permalink &#125;&#125;"</span>  <span class="attr">aria-label</span>=<span class="string">"复制成功！"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">&lt;p&gt;&lt;span&gt;许可协议:&lt;/span&gt;&lt;i class="fa fa-creative-commons"&gt;&lt;/i&lt;a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)"&gt;署名-非商业性使用-禁止演绎 4.0 国际&lt;/a转载请保留原文链接及作者。&lt;/p </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span></span></span><br><span class="line"><span class="tag"><span class="attr">var</span> <span class="attr">clipboard</span> = <span class="string">new</span> <span class="attr">Clipboard</span>('<span class="attr">.fa-clipboard</span>');</span></span><br><span class="line"><span class="tag"><span class="attr">clipboard.on</span>('<span class="attr">success</span>', $(<span class="attr">function</span>()&#123;</span></span><br><span class="line"><span class="tag">  $("<span class="attr">.fa-clipboard</span>")<span class="attr">.click</span>(<span class="attr">function</span>()&#123;</span></span><br><span class="line"><span class="tag"><span class="attr">swal</span>(&#123;   </span></span><br><span class="line"><span class="tag">  <span class="attr">title:</span> "",   </span></span><br><span class="line"><span class="tag">  <span class="attr">text:</span> '复制成功',   </span></span><br><span class="line"><span class="tag">  <span class="attr">html:</span> <span class="attr">false</span>,</span></span><br><span class="line"><span class="tag">  <span class="attr">timer:</span> <span class="attr">500</span>,   </span></span><br><span class="line"><span class="tag">  <span class="attr">showConfirmButton:</span> <span class="attr">false</span></span></span><br><span class="line"><span class="tag">&#125;);</span></span><br><span class="line"><span class="tag">  &#125;);</span></span><br><span class="line"><span class="tag">&#125;));  </span></span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中，这三个文件是http协议的，如果你的网站是https的是访问不到的</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://jslibs.wuxubj.cn/sweetalert_mini/jquery-1.7.1.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">type</span>=<span class="string">"text/css"</span> <span class="attr">href</span>=<span class="string">"http://jslibs.wuxubj.cn/sweetalert_mini/sweetalert.mini.css"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>那么久先在浏览器访问这三个文件，自己保存到本地的NexT主题的资源目录下，再把my-copyright.swig文件里改成你本地的路径就好了。</p>
 <p>这都弄好之后，我们就可以在必要的地方引入模板了。在哪呢？</p>
 <p>在next\layout_macro目录下的post.swig里加，具体在哪个位置呢？先打开它，找到这个地方：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;#####################&#125;</span><br><span class="line">&#123;### END POST BODY ###&#125;</span><br><span class="line">&#123;#####################&#125;</span><br></pre></td></tr></table></figure>
+
 <p>在其后面添加如下代码：</p>
-<pre><code>&lt;div&gt;
-    {% if not is_index %}
-	    {% include 'my-copyright.swig' %}
-	    {% endif %}
-&lt;/div&gt; </code></pre><p>保存，<br>在执行hexo g和hexo d前要确保你的文章开头添加属性<code>copyright: true</code>，添加版权的代码才会有效，你可以吧这个属性添加到文章模板里，然后执行完命令后，打开你的博客验证一下就OK了。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span><br><span class="line">&#123;% if not is_index %&#125;</span><br><span class="line">&#123;% include 'my-copyright.swig' %&#125;</span><br><span class="line">&#123;% endif %&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>保存</p>
+<p>在执行hexo g和hexo d前要确保你的文章开头添加属性<code>copyright: true</code>，添加版权的代码才会有效（你可以把这个属性添加到文章模板里），然后执行完命令后，打开你的博客验证一下就OK了。</p>
 <p>可以来我的网站看效果，<a href="https://itwalking.top">https://itwalking.top</a></p>
-</script></i></p></div></code></pre>
+
       
     </div>
     
@@ -491,7 +474,7 @@
   <p><span>本文标题:</span>Hexo为文章添加版权信息</p>
   <p><span>文章作者:</span>walking</p>
   <p><span>发布时间:</span>2019年05月30日 - 15:45:32</p>
-  <p><span>最后更新:</span>2019年05月30日 - 17:01:13</p>
+  <p><span>最后更新:</span>2019年05月30日 - 21:43:57</p>
   <p><span>原始链接:</span><a href="/page/m30t15.html" title="Hexo为文章添加版权信息">https://itwalking.top/page/m30t15.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://itwalking.top/page/m30t15.html" aria-label="复制成功！"></i></span>
   </p>
@@ -593,6 +576,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/page/m30t21.html" rel="prev" title="解决Hexo里NexT主题使用needmoreshare2微信分享图片加载失败的问题">
+                解决Hexo里NexT主题使用needmoreshare2微信分享图片加载失败的问题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -661,7 +648,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -683,7 +670,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

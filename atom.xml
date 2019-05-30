@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://itwalking.top/"/>
-  <updated>2019-05-30T09:01:13.518Z</updated>
+  <updated>2019-05-30T14:11:51.538Z</updated>
   <id>https://itwalking.top/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>解决Hexo里NexT主题使用needmoreshare2微信分享图片加载失败的问题</title>
+    <link href="https://itwalking.top/page/m30t21.html"/>
+    <id>https://itwalking.top/page/m30t21.html</id>
+    <published>2019-05-30T09:02:52.000Z</published>
+    <updated>2019-05-30T14:11:51.538Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;使用hexo搭建的静态博客，NexT主题下开启分享功能，有好几种分享功能，我用的是needmoreshare2的。&lt;br&gt;具体设置是在主题配置文件里，这样设置的&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td
+        
+      
+    
+    </summary>
+    
+      <category term="技术教程" scheme="https://itwalking.top/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="hexo" scheme="https://itwalking.top/tags/hexo/"/>
+    
+      <category term="分享" scheme="https://itwalking.top/tags/%E5%88%86%E4%BA%AB/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo为文章添加版权信息</title>
     <link href="https://itwalking.top/page/m30t15.html"/>
     <id>https://itwalking.top/page/m30t15.html</id>
     <published>2019-05-30T07:45:32.000Z</published>
-    <updated>2019-05-30T09:01:13.518Z</updated>
+    <updated>2019-05-30T13:43:57.816Z</updated>
     
     <summary type="html">
     
