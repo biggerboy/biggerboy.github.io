@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://itwalking.top/"/>
-  <updated>2019-05-29T13:41:22.633Z</updated>
+  <updated>2019-05-30T05:10:38.090Z</updated>
   <id>https://itwalking.top/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo博客NexT主题不蒜子统计</title>
+    <link href="https://itwalking.top/page/m30t12.html"/>
+    <id>https://itwalking.top/page/m30t12.html</id>
+    <published>2019-05-30T04:54:32.000Z</published>
+    <updated>2019-05-30T05:10:38.090Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;关于NexT的主题的一些基本设置，参考的是这篇文章&lt;code&gt;https://www.jianshu.com/p/3a05351a37dc&lt;/code&gt;，其中对于不蒜子的统计我做了一些小的修改，使他更加灵活。
+    
+    </summary>
+    
+      <category term="技术教程" scheme="https://itwalking.top/categories/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B/"/>
+    
+    
+      <category term="hexo" scheme="https://itwalking.top/tags/hexo/"/>
+    
+      <category term="统计" scheme="https://itwalking.top/tags/%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>修改Hexo自动生成的HTML文件名</title>

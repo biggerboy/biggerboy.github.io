@@ -310,10 +310,10 @@
         
           <div class="tag-cloud">
             <div class="tag-cloud-title">
-                目前共计 14 个标签
+                目前共计 15 个标签
             </div>
             <div class="tag-cloud-tags">
-              <a href="/tags/hexo/" style="font-size: 30px; color: #111">hexo</a> <a href="/tags/next/" style="font-size: 12px; color: #ccc">next</a> <a href="/tags/next主题/" style="font-size: 12px; color: #ccc">next主题</a> <a href="/tags/nginx/" style="font-size: 12px; color: #ccc">nginx</a> <a href="/tags/redis/" style="font-size: 12px; color: #ccc">redis</a> <a href="/tags/前后端分离/" style="font-size: 12px; color: #ccc">前后端分离</a> <a href="/tags/包装类/" style="font-size: 12px; color: #ccc">包装类</a> <a href="/tags/博客/" style="font-size: 21px; color: #6f6f6f">博客</a> <a href="/tags/开发规范/" style="font-size: 12px; color: #ccc">开发规范</a> <a href="/tags/抽象方法/" style="font-size: 12px; color: #ccc">抽象方法</a> <a href="/tags/抽象类/" style="font-size: 12px; color: #ccc">抽象类</a> <a href="/tags/特效/" style="font-size: 12px; color: #ccc">特效</a> <a href="/tags/系统设计/" style="font-size: 12px; color: #ccc">系统设计</a> <a href="/tags/继承/" style="font-size: 12px; color: #ccc">继承</a>
+              <a href="/tags/hexo/" style="font-size: 30px; color: #111">hexo</a> <a href="/tags/next/" style="font-size: 12px; color: #ccc">next</a> <a href="/tags/next主题/" style="font-size: 12px; color: #ccc">next主题</a> <a href="/tags/nginx/" style="font-size: 12px; color: #ccc">nginx</a> <a href="/tags/redis/" style="font-size: 12px; color: #ccc">redis</a> <a href="/tags/前后端分离/" style="font-size: 12px; color: #ccc">前后端分离</a> <a href="/tags/包装类/" style="font-size: 12px; color: #ccc">包装类</a> <a href="/tags/博客/" style="font-size: 21px; color: #6f6f6f">博客</a> <a href="/tags/开发规范/" style="font-size: 12px; color: #ccc">开发规范</a> <a href="/tags/抽象方法/" style="font-size: 12px; color: #ccc">抽象方法</a> <a href="/tags/抽象类/" style="font-size: 12px; color: #ccc">抽象类</a> <a href="/tags/特效/" style="font-size: 12px; color: #ccc">特效</a> <a href="/tags/系统设计/" style="font-size: 12px; color: #ccc">系统设计</a> <a href="/tags/统计/" style="font-size: 12px; color: #ccc">统计</a> <a href="/tags/继承/" style="font-size: 12px; color: #ccc">继承</a>
             </div>
           </div>
         
@@ -375,7 +375,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -397,7 +397,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -484,14 +484,15 @@
 
 
 <div>
+
 <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 <span id="busuanzi_container_site_pv" style="display:none">
     自2019.05.24起 本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
-    <!--<span class="post-meta-divider">|</span>-->
-</span><!--
-<span id="busuanzi_container_site_uv" style='display:none'>
-    有<span id="busuanzi_value_site_uv"></span>人看过我的博客啦
-</span>-->
+	
+</span>
+
+
 </div>
 
 
@@ -969,6 +970,113 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("zTkgSomx7ULKqUHHBJG8fsht-gzGzoHsz", "xP1qDDSpLD974l4iV3RILOhl");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
