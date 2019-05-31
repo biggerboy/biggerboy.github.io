@@ -105,7 +105,7 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190529173119277.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2liaWdib3k=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190529213653313.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2liaWdib3k=,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2019052917440280.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2liaWdib3k=,size_16,color_FFFFFF,t_70">
-<meta property="og:updated_time" content="2019-05-30T11:19:55.186Z">
+<meta property="og:updated_time" content="2019-05-31T08:03:24.456Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="修改Hexo自动生成的HTML文件名">
 <meta name="twitter:description" content="导读我们在使用Hexo框架生成静态博客时，其实是将你写好的.md文件输出成HTML文件进行渲染，其中HTML的文件名称就是.md的文件名称。">
@@ -451,7 +451,12 @@
 <h3 id="存在的问题-1"><a href="#存在的问题-1" class="headerlink" title="存在的问题"></a>存在的问题</h3><p>这种方法解决了上面那个方法存在的问题，即每次执行<code>node rename.js</code>只要原文件名不变，生成的新文件名不变。但是需要限制文件名不能变，否则新文件名还是会变。还有一点不能重复执行<code>node rename.js</code>，因为会根据新的再次生成新的。</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>第2、3种方式都需要注意的是，<br>1、新名字的生成规则，要保证唯一性，不能重复<br>2、每次<code>hexo g</code>之后<code>hexo d</code>之前，要执行<code>node rename.js</code><br>3、不要重复执行<br>4、第一种不太可行，推介第二种</p>
 <h2 id="（4）修改文件生成规则"><a href="#（4）修改文件生成规则" class="headerlink" title="（4）修改文件生成规则"></a>（4）修改文件生成规则</h2><p>以上两种方式都需要我们来写代码，而且要手动执行<code>node rename.js</code><br>对于这么懒的我来说很不方便，有没有更好的办法？答案是肯定的。</p>
-<p>我们可以找到Hexo的根配置文件_config.yml，打开它，找到下图这个<br><img src="https://img-blog.csdnimg.cn/20190529172303824.png" alt="在这里插入图片描述"><br>我把他改成这样了，page是目录，执行<code>hexo g</code>会在public下生成，我让生成的HTML文件都放在page下，<code>:fileName.html</code>是HTML的命名格式，其中<code>fileName</code>是个变量。这个变量从哪来？<br>从你的.md文件里，如下图，在你的文章头部增加这个变量并指定一个值，这就是生成HTML时的文件名，注意也是不要和其他文件重复<br><img src="https://img-blog.csdnimg.cn/20190529172719877.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2liaWdib3k=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>也就是说，你的每篇文章只要头部加了这个属性，并赋值且确保唯一就OK了，不用像上面那两种方式那样麻烦了。<br>只样在执行<code>hexo g</code>后就变成这样了<br><img src="https://img-blog.csdnimg.cn/20190529173119277.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2liaWdib3k=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>我们可以找到Hexo的根配置文件_config.yml，打开它，找到下图这个</p>
+<p><img src="https://img-blog.csdnimg.cn/20190529172303824.png" alt="在这里插入图片描述"></p>
+<p>我把他改成这样了，page是目录，执行<code>hexo g</code>会在public下生成，我让生成的HTML文件都放在page下，<code>:fileName.html</code>是HTML的命名格式，其中<code>fileName</code>是个变量。这个变量从哪来？<br>从你的.md文件里，如下图，在你的文章头部增加这个变量并指定一个值，这就是生成HTML时的文件名，注意也是不要和其他文件重复</p>
+<p><img src="https://img-blog.csdnimg.cn/20190529172719877.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2liaWdib3k=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>也就是说，你的每篇文章只要头部加了这个属性，并赋值且确保唯一就OK了，不用像上面那两种方式那样麻烦了。<br>只样在执行<code>hexo g</code>后就变成这样了</p>
+<p><img src="https://img-blog.csdnimg.cn/20190529173119277.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2liaWdib3k=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>执行<code>hexo d</code>后访问我的网站就是这样了</p>
 <p><img src="https://img-blog.csdnimg.cn/20190529213653313.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2liaWdib3k=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
 <p>为了避免忘记在写文章时写fileName属性，我们可以修改模板，在scaffolds目录下有三个模板<br>在模板添加fileName属性</p>
@@ -481,7 +486,7 @@
   <p><span>本文标题:</span>修改Hexo自动生成的HTML文件名</p>
   <p><span>文章作者:</span>walking</p>
   <p><span>发布时间:</span>2019年05月29日 - 17:49:53</p>
-  <p><span>最后更新:</span>2019年05月30日 - 19:19:55</p>
+  <p><span>最后更新:</span>2019年05月31日 - 16:03:24</p>
   <p><span>原始链接:</span><a href="/page/m29w17.html" title="修改Hexo自动生成的HTML文件名">https://itwalking.top/page/m29w17.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://itwalking.top/page/m29w17.html" aria-label="复制成功！"></i></span>
   </p>

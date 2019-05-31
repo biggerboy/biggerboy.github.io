@@ -95,12 +95,12 @@
 <meta property="og:site_name" content="walking">
 <meta property="og:description" content="背景引入最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/3/5/1694d4d40b5332af?w=796&h=166&f=png&s=15348">
-<meta property="og:updated_time" content="2019-05-29T05:15:57.784Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/31/VlV0SA.md.png">
+<meta property="og:updated_time" content="2019-05-31T07:45:57.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何实现页面广告随时上下线、过期自动下线及到时自动上线">
 <meta name="twitter:description" content="背景引入最近需要实现一个功能，关于页面广告自动配置的，如支付宝的支付完成页。这篇随笔是记录对这个需求从分析到实现以及优化的过程，以免以后忘记。">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/3/5/1694d4d40b5332af?w=796&h=166&f=png&s=15348">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/05/31/VlV0SA.md.png">
 
 
 
@@ -452,7 +452,7 @@
 <p>2、【每个页面广告的个数可变】【不同广告上下线时间可不同】【页面与页面之间的活动不一定一样】</p>
 <p>页面可配置多个广告，所有要有<strong>页面配置表</strong>，以及广告和页面的关系表，即<strong>页面广告表</strong>。</p>
 <p><strong>页面配置表</strong>主要配置页面的广告个数，实现【每个页面广告的个数可变】，<strong>页面广告表</strong>主要配置页面的每个广告上下线时间，实现【不同广告上下线时间可不同】</p>
-<p>简单分析后得出如下表结构：广告表adv，页面配置表page_config，页面广告表page_adv<br><img src="https://user-gold-cdn.xitu.io/2019/3/5/1694d4d40b5332af?w=796&h=166&f=png&s=15348" alt="表结构"></p>
+<p>简单分析后得出如下表结构：广告表adv，页面配置表page_config，页面广告表page_adv<br>[<img src="https://s2.ax1x.com/2019/05/31/VlV0SA.md.png" alt="VlV0SA.md.png">]</p>
 <h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><p>这些页面配置的广告在一段时间内是不会变的，如果页面请求次数较多，广告查询次数就会很频繁，对数据库造成不必要的压力。所以可以引入缓存，降低数据库请求次数，缓解数据库压力。这里使用的Redis。</p>
 <p><strong>何时入缓存？</strong></p>
 <p>可以选择在服务启动时异步把已在上下线时间区间内的广告先加载至缓存，或选择在请求时取缓存，缓存内没有时再查库然后放缓存。缓存时间视情况而定。</p>
@@ -532,7 +532,7 @@
   <p><span>本文标题:</span>如何实现页面广告随时上下线、过期自动下线及到时自动上线</p>
   <p><span>文章作者:</span>walking</p>
   <p><span>发布时间:</span>2019年02月24日 - 18:03:38</p>
-  <p><span>最后更新:</span>2019年05月29日 - 13:15:57</p>
+  <p><span>最后更新:</span>2019年05月31日 - 15:45:57</p>
   <p><span>原始链接:</span><a href="/page/2k181v.html" title="如何实现页面广告随时上下线、过期自动下线及到时自动上线">https://itwalking.top/page/2k181v.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://itwalking.top/page/2k181v.html" aria-label="复制成功！"></i></span>
   </p>

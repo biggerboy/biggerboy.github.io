@@ -95,12 +95,12 @@
 <meta property="og:site_name" content="walking">
 <meta property="og:description" content="int==Integer为什么返回true先看现象吧 执行下面的代码及输出结果：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://user-gold-cdn.xitu.io/2019/3/7/169571d32f54b03b?w=894&h=500&f=png&s=45036">
-<meta property="og:updated_time" content="2019-05-29T05:15:27.702Z">
+<meta property="og:image" content="https://s2.ax1x.com/2019/05/31/Vlm0SJ.md.png">
+<meta property="og:updated_time" content="2019-05-31T07:46:45.419Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何向女朋友解释int==Integer为true">
 <meta name="twitter:description" content="int==Integer为什么返回true先看现象吧 执行下面的代码及输出结果：">
-<meta name="twitter:image" content="https://user-gold-cdn.xitu.io/2019/3/7/169571d32f54b03b?w=894&h=500&f=png&s=45036">
+<meta name="twitter:image" content="https://s2.ax1x.com/2019/05/31/Vlm0SJ.md.png">
 
 
 
@@ -451,7 +451,8 @@
 <h2 id="基本类型及引用类型在内存中的存储方式"><a href="#基本类型及引用类型在内存中的存储方式" class="headerlink" title="基本类型及引用类型在内存中的存储方式"></a>基本类型及引用类型在内存中的存储方式</h2><p>说到这，还要解释下为什么两个引用类型的值一样而引用不一样以及基本变量为什么是值比较。</p>
 <p>其实基本变量int a在内存里只有一份，保存在栈（保存基本类型的变量数据及引用类型的引用）中，Integer b和Integer c中的int值都指向栈中同一个int，不会重新在栈中创建相同的int值。</p>
 <p>而对于Integer b和Integer c，其实例是保存在堆（保存所有new出来的对象）中，虽然表示的int值相同，但是在堆中有两份，每次new都会在堆中开辟一片空间保存new的内容，故Integer b和Integer c分别在两片不同的内存空间存储，所以指向的内存地址不同。</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/3/7/169571d32f54b03b?w=894&h=500&f=png&s=45036" alt><br>而对于Integer b = 1;其反编译后为Integer b = Integer.valueOf(1);<br>而valueOf()方法内部是调用了new。</p>
+<p>[<img src="https://s2.ax1x.com/2019/05/31/Vlm0SJ.md.png" alt="Vlm0SJ.md.png">]</p>
+<p>而对于Integer b = 1;其反编译后为Integer b = Integer.valueOf(1);<br>而valueOf()方法内部是调用了new。</p>
 <p>JDK中Integer.valueOf()源码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public static Integer valueOf(int i) &#123;</span><br><span class="line">        if (i &gt;= IntegerCache.low &amp;&amp; i &lt;= IntegerCache.high)</span><br><span class="line">            return IntegerCache.cache[i + (-IntegerCache.low)];</span><br><span class="line">        return new Integer(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -477,7 +478,7 @@
   <p><span>本文标题:</span>如何向女朋友解释int==Integer为true</p>
   <p><span>文章作者:</span>walking</p>
   <p><span>发布时间:</span>2019年03月03日 - 21:02:56</p>
-  <p><span>最后更新:</span>2019年05月29日 - 13:15:27</p>
+  <p><span>最后更新:</span>2019年05月31日 - 15:46:45</p>
   <p><span>原始链接:</span><a href="/page/h3s09b.html" title="如何向女朋友解释int==Integer为true">https://itwalking.top/page/h3s09b.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://itwalking.top/page/h3s09b.html" aria-label="复制成功！"></i></span>
   </p>

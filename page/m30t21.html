@@ -101,7 +101,7 @@
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/30/VQAhIH.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/30/VQAIJA.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/05/30/VQAoRI.png">
-<meta property="og:updated_time" content="2019-05-30T14:36:31.393Z">
+<meta property="og:updated_time" content="2019-05-31T07:57:35.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解决Hexo里NexT主题使用needmoreshare2微信分享图片加载失败的问题">
 <meta name="twitter:description" content="使用hexo搭建的静态博客，NexT主题下开启分享功能，有好几种分享功能，我用的是needmoreshare2的。具体设置是在主题配置文件里，这样设置的">
@@ -444,7 +444,8 @@
         <p>使用hexo搭建的静态博客，NexT主题下开启分享功能，有好几种分享功能，我用的是needmoreshare2的。<br>具体设置是在主题配置文件里，这样设置的<a id="more"></a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">needmoreshare2:</span><br><span class="line">  enable: true</span><br><span class="line">  postbottom:</span><br><span class="line">    enable: true</span><br><span class="line">    options:</span><br><span class="line">      iconStyle: box</span><br><span class="line">      boxForm: horizontal</span><br><span class="line">      position: topCenter</span><br><span class="line">      networks: Weibo,Wechat,Douban,QQZone,Twitter,Facebook</span><br><span class="line">  float:</span><br><span class="line">    enable: false</span><br><span class="line">    options:</span><br><span class="line">      iconStyle: box</span><br><span class="line">      boxForm: vertical</span><br><span class="line">      position: bottomCenter</span><br><span class="line">      networks: Weibo,Wechat,Douban,QQZone,Twitter,Facebook</span><br></pre></td></tr></table></figure>
 
-<p>设置完之后，在文章下面会有个分享的小按钮，点击按钮会出来如上配置的那些社交网站的图标，别的都能正常跳转处理推特和脸书是外国的进不去外，只有点击微信时加载不出来，就是下面图片这样的<br><img src="https://s2.ax1x.com/2019/05/30/VQkGnO.png" alt></p>
+<p>设置完之后，在文章下面会有个分享的小按钮，点击按钮会出来如上配置的那些社交网站的图标，别的都能正常跳转处理推特和脸书是外国的进不去外，只有点击微信时加载不出来，就是下面图片这样的</p>
+<p><img src="https://s2.ax1x.com/2019/05/30/VQkGnO.png" alt></p>
 <p>F12下找到对应的img标签，可以看到它的src属性值是一个链接，链接的参数就是你的当前文章的地址（如下图），把这个链接复制出来直接在地址栏访问也是访问不到的。</p>
 <p>可以推测这应该是把你的文章通过这个api生成一个二维码图片返回，但是现在这个api调不通了。</p>
 <p>既然找到了问题的根源，那就好办了。就是换个生成二维码的api。</p>
@@ -483,7 +484,7 @@
   <p><span>本文标题:</span>解决Hexo里NexT主题使用needmoreshare2微信分享图片加载失败的问题</p>
   <p><span>文章作者:</span>walking</p>
   <p><span>发布时间:</span>2019年05月30日 - 17:02:52</p>
-  <p><span>最后更新:</span>2019年05月30日 - 22:36:31</p>
+  <p><span>最后更新:</span>2019年05月31日 - 15:57:35</p>
   <p><span>原始链接:</span><a href="/page/m30t21.html" title="解决Hexo里NexT主题使用needmoreshare2微信分享图片加载失败的问题">https://itwalking.top/page/m30t21.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://itwalking.top/page/m30t21.html" aria-label="复制成功！"></i></span>
   </p>
