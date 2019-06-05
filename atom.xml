@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://itwalking.top/"/>
-  <updated>2019-05-31T07:57:35.041Z</updated>
+  <updated>2019-06-05T07:32:16.937Z</updated>
   <id>https://itwalking.top/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis缓存穿透，缓存击穿，缓存雪崩，热点Key</title>
+    <link href="https://itwalking.top/page/j5f630.html"/>
+    <id>https://itwalking.top/page/j5f630.html</id>
+    <published>2019-06-05T01:25:48.000Z</published>
+    <updated>2019-06-05T07:32:16.937Z</updated>
+    
+    <summary type="html">
+    
+      Redis缓存穿透，缓存击穿，缓存雪崩，热点Key
+    
+    </summary>
+    
+      <category term="IT技术" scheme="https://itwalking.top/categories/IT%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="redis" scheme="https://itwalking.top/tags/redis/"/>
+    
+  </entry>
   
   <entry>
     <title>解决Hexo里NexT主题使用needmoreshare2微信分享图片加载失败的问题</title>
