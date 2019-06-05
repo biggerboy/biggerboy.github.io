@@ -96,7 +96,7 @@
 <meta property="og:description" content="导读使用Redis难免会遇到Redis缓存穿透，缓存击穿，缓存雪崩，热点Key的问题。有些同学可能只是会用Redis来存取，基本都是用项目里封装的工具类来操作。但是作为开发，我们使用Redis时可能会遇到上述问题，可能你还不知道这几个名词是什么意思，那么现在就让我们一起来探讨下吧。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/05/VU9Nz4.png">
-<meta property="og:updated_time" content="2019-06-05T07:45:49.951Z">
+<meta property="og:updated_time" content="2019-06-05T08:04:47.108Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis缓存穿透，缓存击穿，缓存雪崩，热点Key">
 <meta name="twitter:description" content="导读使用Redis难免会遇到Redis缓存穿透，缓存击穿，缓存雪崩，热点Key的问题。有些同学可能只是会用Redis来存取，基本都是用项目里封装的工具类来操作。但是作为开发，我们使用Redis时可能会遇到上述问题，可能你还不知道这几个名词是什么意思，那么现在就让我们一起来探讨下吧。">
@@ -437,7 +437,8 @@
 
       
         <h2 id="导读"><a href="#导读" class="headerlink" title="导读"></a>导读</h2><p>使用Redis难免会遇到Redis缓存穿透，缓存击穿，缓存雪崩，热点Key的问题。有些同学可能只是会用Redis来存取，基本都是用项目里封装的工具类来操作。但是作为开发，我们使用Redis时可能会遇到上述问题，可能你还不知道这几个名词是什么意思，那么现在就让我们一起来探讨下吧。<a id="more"></a></p>
-<p>首先我们使用Redis的逻辑是这样的<br><img src="https://s2.ax1x.com/2019/06/05/VU9Nz4.png" alt="VU9Nz4.png"></p>
+<p>首先我们使用Redis的逻辑是这样的</p>
+<p><img src="https://s2.ax1x.com/2019/06/05/VU9Nz4.png" alt="VU9Nz4.png"></p>
 <h2 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h2><p>是针对数据库和缓存中都没有的数据。场景：当客户端发起查询时，缓存中没有就会去查库，库里也没有，就会返回给客户端错误信息。这样是没问题的，看起来逻辑是完美的，但是这里存在一个漏洞，那就是无论什么样的Key过来查，我们都去接受它的请求，这就可能会被黑客抓住，发起大量请求，并且Key都是我们系统中没有的，库里也查不到对应的值，这样的Key称之为非法Key。那么当大量这样的请求过来时是不是都不会命中Redis，然后都会打到DB上，当DB瞬时接收到如此多的连接时，DB就有可能撑不住，挂掉。这就是存在的一个隐藏的漏洞，黑客或者恶意攻击者就会抓住这一点攻击你的系统，使你的系统瘫痪。</p>
 <p>实际开发中就要考虑到这一点，可以在系统层面加一层过滤，将系统认为非法的key进行一次拦截，直接返回给客户端错误信息。具体这层过滤怎么加，哪些是非法Key要根据实际的业务逻辑来定，这里只给出解决思路。</p>
 <h2 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h2><p>是针对缓存中没有但数据库有的数据。场景是，当Key失效后，假如瞬间突然涌入大量的请求，来请求同一个Key，这些请求不会命中Redis，都会请求到DB，导致数据库压力过大，甚至扛不住，挂掉。</p>
@@ -470,7 +471,7 @@
   <p><span>本文标题:</span>Redis缓存穿透，缓存击穿，缓存雪崩，热点Key</p>
   <p><span>文章作者:</span>walking</p>
   <p><span>发布时间:</span>2019年06月05日 - 09:25:48</p>
-  <p><span>最后更新:</span>2019年06月05日 - 15:45:49</p>
+  <p><span>最后更新:</span>2019年06月05日 - 16:04:47</p>
   <p><span>原始链接:</span><a href="/page/j5f630.html" title="Redis缓存穿透，缓存击穿，缓存雪崩，热点Key">https://itwalking.top/page/j5f630.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://itwalking.top/page/j5f630.html" aria-label="复制成功！"></i></span>
   </p>
@@ -673,7 +674,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

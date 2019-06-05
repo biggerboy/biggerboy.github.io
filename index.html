@@ -345,6 +345,28 @@
           </span>
 
           
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/经验分享/" itemprop="url" rel="index">
+                    <span itemprop="name">经验分享</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -415,39 +437,17 @@
 
       
         
-          
-            <h2 id="购买云服务器"><a href="#购买云服务器" class="headerlink" title="购买云服务器"></a>购买云服务器</h2><p>现在市面上云服务器选择性很广泛，例如阿里云，百度云，腾讯云，华为云等，而且很多公司也会选择云服务器作为自己的服务器。我选择购买的是腾讯云的云服务器，配置是1核1G带宽1Mbps的最基本的一台云服务器。购买时自己选择服务器的配置，包括操作系统是Windows还是linux，64还是32，以及系统版本什么的。</p>
-<p>1、这样<br><img src="https://s2.ax1x.com/2019/06/05/VUP9HI.png" alt="VUP9HI.png"></p>
-<p>2、然后</p>
-<p><img src="https://s2.ax1x.com/2019/06/05/VUPAC8.png" alt="VUPAC8.png"></p>
-<p>…（此处省略）</p>
-<p>也可以选择快速配置，就不用这么一步步的选了。购买完成后会告诉你服务器公网IP以及做一些简单的设置，如管理员密码等。</p>
-<h2 id="远程登录服务器"><a href="#远程登录服务器" class="headerlink" title="远程登录服务器"></a>远程登录服务器</h2><p>接下来要做的就是远程登录你的服务器了，我用的工具是Xshell以和Xftp，非常方便好用界面也好看。好了，用你设置的管理员账号登录上去，你会发现这是一个干净的系统，只有系统自带的应用，非常好，这是一张白纸你可以画画了。</p>
-<h2 id="安装必要软件"><a href="#安装必要软件" class="headerlink" title="安装必要软件"></a>安装必要软件</h2><p>因为我们要部署JAVA Web项目，所以我们要安装一些必需的软件。</p>
-<h3 id="1、JDK"><a href="#1、JDK" class="headerlink" title="1、JDK"></a>1、JDK</h3><p>运行JAVA Web项目必不可少的就是java环境了，首先我们安装JDK然后配置环境变量。<br>安装JDK不再赘述，网上都有。<br>安装完在配置文件（/etc/profile）里增加如下配置，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME=/usr/jdk/jdk1.8.0_211 </span><br><span class="line">export PATH=$PATH:$JAVA_HOME/bin:$PATH</span><br><span class="line">export CLASSPATH=.:$JAVA_HOME/lib:$JAVA_HOME/jre/lib</span><br><span class="line">export JRE_HOME=$JAVA_HOME/jre</span><br></pre></td></tr></table></figure>
-
-<p>然后重新加载配置文件或者重启，然后执行java -version出现下面几行，说明安装且配置环境变量成功了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java version &quot;1.8.0_211&quot;</span><br><span class="line">Java(TM) SE Runtime Environment (build 1.8.0_211-b12)</span><br><span class="line">Java HotSpot(TM) 64-Bit Server VM (build 25.211-b12, mixed mode)</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、Tomcat"><a href="#2、Tomcat" class="headerlink" title="2、Tomcat"></a>2、Tomcat</h3><p>安装Tomcat，比较容易安装，我是在本机下载linux版本的压缩包后，上传到服务器上的，直接压到/opt下，然后在tomcat/conf/server.xml修改默认端口号为80，在tomcat/bin下执行./startup.sh，然后在浏览器访问你的地址，<a href="http://ip，出现经典的tomcat页面，说明Tomcat安装成功了。" target="_blank" rel="noopener">http://ip，出现经典的tomcat页面，说明Tomcat安装成功了。</a></p>
-<p><img src="https://s2.ax1x.com/2019/06/05/VUPnDs.png" alt="VUPnDs.png"></p>
-<h3 id="3、Mysql"><a href="#3、Mysql" class="headerlink" title="3、Mysql"></a>3、Mysql</h3><p>安装Mysql，这个是最麻烦的，这个我选择的是在线安装，很慢，等了好久才安装完成。<br>安装完成后，启动-&gt;登录–&gt;查看初始密码，用初始密码登录-&gt;修改初始密码(修改时可能报错原因：密码策略检查不通过，可以把密码策略设置为LOW只校验长度)-&gt;设置访问权限(哪些ip可以访问)。</p>
-<p>配置完强制刷新。</p>
-<h3 id="4、Redis"><a href="#4、Redis" class="headerlink" title="4、Redis"></a>4、Redis</h3><p>安装Redis，个人网站配置成单机的足够了。</p>
-<h2 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h2><h3 id="1、项目打包传至服务器"><a href="#1、项目打包传至服务器" class="headerlink" title="1、项目打包传至服务器"></a>1、项目打包传至服务器</h3><p>把做好的项目打war包，上传至tomcat/webapp下。</p>
-<h3 id="2、启动tomcat"><a href="#2、启动tomcat" class="headerlink" title="2、启动tomcat"></a>2、启动tomcat</h3><p>访问你的网站资源，<a href="http://ip/war包名/资源路径。" target="_blank" rel="noopener">http://ip/war包名/资源路径。</a></p>
-<p>浏览器转了很久最后出现，拒绝访问，然后就检查防火墙什么的，想着关闭防火墙试试，发现报错，原因是防火墙就没开，于是出于安全，把防火墙打开，在防火墙配置文件里配置开放80端口和一些端口如1000–2000，还有Mysql的3306，Redis的6379，然后重启防火墙。</p>
-<p>再访问，页面出来了，调数据库的都失败了，报空指针，日志打了一些Mybatis的错误信息，打出了某个Mapper.xml的方法名，百度了一下，让我关防火墙试试，实在不行的话重装MySQL！。。什么鬼东西。</p>
-<p>最后仔细检查了下，其实是因为我用的<code>JNDI</code>连接数据库，在Tomcat的context.xml里配置数据库连接信息也配了，最后找到原因了，是因为我本地环境的数据库密码和云服务器上数据库密码设置的不一样，修改完密码之后，重启，果然好了。JNDI，密码错了都不报错，记得以前用JDBC时会告诉你密码错误，JNDI是一点相关信息都没有，让我一顿好找！</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>因为这里分享的是自己搭建网站的简单步骤和过程，属于练手的一次实践，而实际上生产环境搭建网站比这复杂多得多了，什么负载均衡、CND、域名解析等等。我想说的是搭建个人网站其实也并没有想象中的那么难，实践过一次就知道是怎么回事了，希望对有这种想法以及想实践的小伙伴有所帮助，在这个过程中踩的每一个坑都是满满的收获。</p>
-<p>关注公众号@编程大道，让我们一起成长吧！</p>
-<p><img src="https://s2.ax1x.com/2019/06/05/VUPQU0.md.png" alt="VUPQU0.md.png"></p>
-
-          
+          <h2 id="购买云服务器"><a href="#购买云服务器" class="headerlink" title="购买云服务器"></a>购买云服务器</h2><p>现在市面上云服务器选择性很广泛，例如阿里云，百度云，腾讯云，华为云等，而且很多公司也会选择云服务器作为自己的服务器。我选择购买的是腾讯云的云服务器，配置是1核1G带宽1Mbps的最基本的一台云服务器。购买时自己选择服务器的配置，包括操作系统是Windows还是linux，64还是32，以及系统版本什么的。
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/page/a19m05.html#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
-    </div>
+    </p></div>
     
     
     
@@ -1314,7 +1314,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
