@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://itwalking.top/"/>
-  <updated>2019-06-12T07:53:59.121Z</updated>
+  <updated>2019-06-12T10:33:40.496Z</updated>
   <id>https://itwalking.top/</id>
   
   <author>
@@ -17,15 +17,21 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>HashMap的底层原理（jdk1.7）</title>
+    <title>HashMap的底层原理（jdk1.7.0_79）</title>
     <link href="https://itwalking.top/page/j06w12.html"/>
     <id>https://itwalking.top/page/j06w12.html</id>
     <published>2019-06-12T07:36:14.000Z</published>
-    <updated>2019-06-12T07:53:59.121Z</updated>
+    <updated>2019-06-12T10:33:40.496Z</updated>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;在Java中我们最常用的集合类毫无疑问就是&lt;code&gt;Map&lt;/code&gt;，其中&lt;code&gt;HashMap&lt;/code&gt;作为&lt;code&gt;Map&lt;/code&gt;最重要的实现类在我们代码中出现的评率也是很高的。
+      
+      
+        
+        
+          &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot;
+        
+      
     
     </summary>
     
