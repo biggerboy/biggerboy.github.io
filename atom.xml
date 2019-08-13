@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://itwalking.top/"/>
-  <updated>2019-08-13T00:54:39.062Z</updated>
+  <updated>2019-08-13T02:01:05.678Z</updated>
   <id>https://itwalking.top/</id>
   
   <author>
@@ -17,15 +17,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>解决百度网盘下载慢限速问题（2019亲测可用）</title>
+    <link href="https://itwalking.top/page/a13t28.html"/>
+    <id>https://itwalking.top/page/a13t28.html</id>
+    <published>2019-08-13T01:27:23.000Z</published>
+    <updated>2019-08-13T02:01:05.678Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;百度网盘下载东西的时候，下载的非常慢，几十K几百K的，即时我们的网速很快。分享一款下载器，先看效果图：&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="其他" scheme="https://itwalking.top/categories/%E5%85%B6%E4%BB%96/"/>
+    
+    
+      <category term="网盘提速" scheme="https://itwalking.top/tags/%E7%BD%91%E7%9B%98%E6%8F%90%E9%80%9F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>HashMap的底层原理（jdk1.7.0_79）</title>
     <link href="https://itwalking.top/page/j06w12.html"/>
     <id>https://itwalking.top/page/j06w12.html</id>
     <published>2019-06-12T07:36:14.000Z</published>
-    <updated>2019-08-13T00:54:39.062Z</updated>
+    <updated>2019-08-13T01:26:42.106Z</updated>
     
     <summary type="html">
     
-      &lt;p&gt;#前言&lt;br&gt;在Java中我们最常用的集合类毫无疑问就是&lt;code&gt;Map&lt;/code&gt;，其中&lt;code&gt;HashMap&lt;/code&gt;作为&lt;code&gt;Map&lt;/code&gt;最重要的实现类在我们代码中出现的评率也是很高的。
+      &lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;在Java中我们最常用的集合类毫无疑问就是&lt;code&gt;Map&lt;/code&gt;，其中&lt;code&gt;HashMap&lt;/code&gt;作为&lt;code&gt;Map&lt;/code&gt;最重要的实现类在我们代码中出现的评率也是很高的。
     
     </summary>
     

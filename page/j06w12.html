@@ -87,20 +87,20 @@
 
 
 
-<meta name="description" content="#前言在Java中我们最常用的集合类毫无疑问就是Map，其中HashMap作为Map最重要的实现类在我们代码中出现的评率也是很高的。">
+<meta name="description" content="前言在Java中我们最常用的集合类毫无疑问就是Map，其中HashMap作为Map最重要的实现类在我们代码中出现的评率也是很高的。">
 <meta name="keywords" content="HashMap,底层原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HashMap的底层原理（jdk1.7.0_79）">
 <meta property="og:url" content="https://itwalking.top/page/j06w12.html">
 <meta property="og:site_name" content="walking">
-<meta property="og:description" content="#前言在Java中我们最常用的集合类毫无疑问就是Map，其中HashMap作为Map最重要的实现类在我们代码中出现的评率也是很高的。">
+<meta property="og:description" content="前言在Java中我们最常用的集合类毫无疑问就是Map，其中HashMap作为Map最重要的实现类在我们代码中出现的评率也是很高的。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/12/VRD78A.png">
 <meta property="og:image" content="https://s2.ax1x.com/2019/06/12/VRDODf.png">
-<meta property="og:updated_time" content="2019-08-13T00:54:39.062Z">
+<meta property="og:updated_time" content="2019-08-13T01:26:42.106Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap的底层原理（jdk1.7.0_79）">
-<meta name="twitter:description" content="#前言在Java中我们最常用的集合类毫无疑问就是Map，其中HashMap作为Map最重要的实现类在我们代码中出现的评率也是很高的。">
+<meta name="twitter:description" content="前言在Java中我们最常用的集合类毫无疑问就是Map，其中HashMap作为Map最重要的实现类在我们代码中出现的评率也是很高的。">
 <meta name="twitter:image" content="https://s2.ax1x.com/2019/06/12/VRD78A.png">
 
 
@@ -437,11 +437,11 @@
       
 
       
-        <p>#前言<br>在Java中我们最常用的集合类毫无疑问就是<code>Map</code>，其中<code>HashMap</code>作为<code>Map</code>最重要的实现类在我们代码中出现的评率也是很高的。<a id="more"></a><br>我们对HashMap最常用的操作就是<code>put</code>和<code>get</code>了，那么你知道它是怎么实现的吗？知道HashMap的底层原理吗？你知道从jdk7到jdk8，HashMap发生了什么变化吗？<br>那么我们就带着这些疑问，一起来探秘HashMap。<br>首先声明本文这次讲的HashMap基于Jdk1.7.0_79，不同版本略有差异。Jdk1.8版本的日后讨论。</p>
-<p>#1. HashMap的数据结构<br>我们先从HashMap的数据结构谈起，先了解它的数据结构存储结构，后面看它的代码实现就容易多了。<br>HashMap底层数据结构是由数组和链表来实现对数据的存储，但数组和链表基本上是两个极端。为什么这么说咱们继续往下看。</p>
-<p>##数组<br>数组的存储空间是连续的，占用内存严重，即使是空的也要分配内存，故空间复杂度很大。但数组的二分查找时间复杂度小，为O(1)；<br>数组的特点是：寻址容易，插入和删除困难；</p>
-<p>##链表<br>链表的存储空间是可以离散的，占用内存比较宽松，可以动态增加链表长度，故空间复杂度很小，但由于它是不连续的，查找插入删除操作会很麻烦，故时间复杂度很大，为O(N);<br>链表的特点是：寻址困难，插入和删除容易。</p>
-<p>##哈希表<br>那么我们能不能综合两者的优点，设计出一种寻址容易，插入删除也容易的数据结构？答案是肯定的，这就是我们要讲的哈希表。<br>哈希表（(Hash table）既满足了数据的查找方便，同时不占用太多的内容空间，使用也十分方便。</p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在Java中我们最常用的集合类毫无疑问就是<code>Map</code>，其中<code>HashMap</code>作为<code>Map</code>最重要的实现类在我们代码中出现的评率也是很高的。<a id="more"></a><br>我们对HashMap最常用的操作就是<code>put</code>和<code>get</code>了，那么你知道它是怎么实现的吗？知道HashMap的底层原理吗？你知道从jdk7到jdk8，HashMap发生了什么变化吗？<br>那么我们就带着这些疑问，一起来探秘HashMap。<br>首先声明本文这次讲的HashMap基于Jdk1.7.0_79，不同版本略有差异。Jdk1.8版本的日后讨论。</p>
+<h1 id="HashMap的数据结构"><a href="#HashMap的数据结构" class="headerlink" title="HashMap的数据结构"></a>HashMap的数据结构</h1><p>我们先从HashMap的数据结构谈起，先了解它的数据结构存储结构，后面看它的代码实现就容易多了。<br>HashMap底层数据结构是由数组和链表来实现对数据的存储，但数组和链表基本上是两个极端。为什么这么说咱们继续往下看。</p>
+<h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>数组的存储空间是连续的，占用内存严重，即使是空的也要分配内存，故空间复杂度很大。但数组的二分查找时间复杂度小，为O(1)；<br>数组的特点是：寻址容易，插入和删除困难；</p>
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><p>链表的存储空间是可以离散的，占用内存比较宽松，可以动态增加链表长度，故空间复杂度很小，但由于它是不连续的，查找插入删除操作会很麻烦，故时间复杂度很大，为O(N);<br>链表的特点是：寻址困难，插入和删除容易。</p>
+<h2 id="哈希表"><a href="#哈希表" class="headerlink" title="哈希表"></a>哈希表</h2><p>那么我们能不能综合两者的优点，设计出一种寻址容易，插入删除也容易的数据结构？答案是肯定的，这就是我们要讲的哈希表。<br>哈希表（(Hash table）既满足了数据的查找方便，同时不占用太多的内容空间，使用也十分方便。</p>
 <p>哈希表有多种不同的实现方式，接下来我们探讨的是最常用的一种实现方式–拉链法，我们可以理解为“链表的数组” ，如图：<br><img src="https://s2.ax1x.com/2019/06/12/VRD78A.png" alt="VRD78A.png"></p>
 <p><img src="https://s2.ax1x.com/2019/06/12/VRDODf.png" alt="VRDODf.png"></p>
 <p>从上图我们可以发现哈希表是由数组+链表组成的，在一个长度为16的数组中，每个元素存储的是一个链表的头结点。<br>那么这些元素是按照什么样的规则存储到数组中呢？<br>一般情况是通过hash(key)%len获得，也就是计算出元素的key的哈希值，然后用哈希值对数组长度取模得到的即为该元素存储到数组中的index。</p>
@@ -451,7 +451,7 @@
 <pre><code>/**
  * The table, resized as necessary. Length MUST Always be a power of two.
  */
-transient Entry[] table;</code></pre><h1 id="2-HashMap的存取实现"><a href="#2-HashMap的存取实现" class="headerlink" title="2. HashMap的存取实现"></a>2. HashMap的存取实现</h1><p>既然是线性数组，为什么能随机存取？这里HashMap用了一个小算法，利用hash算法散列，大致是这样实现的：</p>
+transient Entry[] table;</code></pre><h1 id="HashMap的存取实现"><a href="#HashMap的存取实现" class="headerlink" title="HashMap的存取实现"></a>HashMap的存取实现</h1><p>既然是线性数组，为什么能随机存取？这里HashMap用了一个小算法，利用hash算法散列，大致是这样实现的：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 存储时:</span></span><br><span class="line"><span class="comment">// 这个hashCode方法这里不详述,只要理解每个key的hash是一个固定的int值</span></span><br><span class="line"><span class="keyword">int</span> hash = key.hashCode();</span><br><span class="line"><span class="keyword">int</span> index = hash % Entry[].length;</span><br><span class="line">Entry[index] = value;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取值时:</span></span><br><span class="line"><span class="keyword">int</span> hash = key.hashCode();</span><br><span class="line"><span class="keyword">int</span> index = hash % Entry[].length;</span><br><span class="line"><span class="keyword">return</span> Entry[index];</span><br></pre></td></tr></table></figure>
 
 <p>1）put</p>
@@ -485,14 +485,14 @@ transient Entry[] table;</code></pre><h1 id="2-HashMap的存取实现"><a href="
 
 <p>Jdk1.7和之前的版本不同的是我们推迟初始化直到我们确实需要它。即并没有在new的时候就初始化数组，在put的时候判断数组为空时再调用inflateTable初始化HashMap。</p>
 <p>另外需要注意的是table初始大小并不是构造函数中的initialCapacity！！<br>而是 &gt;= initialCapacity的2的n次幂！！！——为什么这么设计呢？——<br>另外，调用无参构造时的初始化大小是16，增长因子是0.75</p>
-<h1 id="3-解决hash冲突的办法"><a href="#3-解决hash冲突的办法" class="headerlink" title="3. 解决hash冲突的办法"></a>3. 解决hash冲突的办法</h1><ul>
+<h1 id="解决hash冲突的办法"><a href="#解决hash冲突的办法" class="headerlink" title="解决hash冲突的办法"></a>解决hash冲突的办法</h1><ul>
 <li>开放定址法（线性探测再散列，二次探测再散列，伪随机探测再散列）</li>
 <li>再哈希法</li>
 <li>链地址法</li>
 <li>建立一个公共溢出区</li>
 </ul>
 <p>Java中HashMap的解决办法就是采用的链地址法。</p>
-<h1 id="4-再散列rehash过程"><a href="#4-再散列rehash过程" class="headerlink" title="4. 再散列rehash过程"></a>4. 再散列rehash过程</h1><p>从上面的代码addEntry方法可以看出，每次都会判断size是不是已经超过threshold，即当哈希表的容量超过默认容量时，必须调整table的大小，对数组进行扩容。</p>
+<h1 id="再散列rehash过程"><a href="#再散列rehash过程" class="headerlink" title="再散列rehash过程"></a>再散列rehash过程</h1><p>从上面的代码addEntry方法可以看出，每次都会判断size是不是已经超过threshold，即当哈希表的容量超过默认容量时，必须调整table的大小，对数组进行扩容。</p>
 <p>当容量已经达到最大可能值时，那么该方法就将容量调整到Integer.MAX_VALUE返回。</p>
 <p>扩容时，需要创建一张新表，将原表的映射到新表中。具体代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">resize</span><span class="params">(<span class="keyword">int</span> newCapacity)</span> </span>&#123;</span><br><span class="line">    Entry[] oldTable = table;</span><br><span class="line">    <span class="keyword">int</span> oldCapacity = oldTable.length;</span><br><span class="line">    <span class="keyword">if</span> (oldCapacity == MAXIMUM_CAPACITY) &#123;</span><br><span class="line">        threshold = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    Entry[] newTable = <span class="keyword">new</span> Entry[newCapacity];</span><br><span class="line">    transfer(newTable, initHashSeedAsNeeded(newCapacity));<span class="comment">//把原来的数组放到新数组里</span></span><br><span class="line">    table = newTable;</span><br><span class="line">    threshold = (<span class="keyword">int</span>)Math.min(newCapacity * loadFactor, MAXIMUM_CAPACITY + <span class="number">1</span>);<span class="comment">//新的阈值</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Transfers all entries from current table to newTable.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">transfer</span><span class="params">(Entry[] newTable, <span class="keyword">boolean</span> rehash)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> newCapacity = newTable.length;</span><br><span class="line">    <span class="keyword">for</span> (Entry&lt;K,V&gt; e : table) &#123;</span><br><span class="line">        <span class="keyword">while</span>(<span class="keyword">null</span> != e) &#123;</span><br><span class="line">            Entry&lt;K,V&gt; next = e.next;</span><br><span class="line">            <span class="keyword">if</span> (rehash) &#123;</span><br><span class="line">                e.hash = <span class="keyword">null</span> == e.key ? <span class="number">0</span> : hash(e.key);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//根据新的数组长度重新计算index</span></span><br><span class="line">            <span class="keyword">int</span> i = indexFor(e.hash, newCapacity);</span><br><span class="line">            e.next = newTable[i];</span><br><span class="line">            newTable[i] = e;</span><br><span class="line">            e = next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -521,7 +521,7 @@ transient Entry[] table;</code></pre><h1 id="2-HashMap的存取实现"><a href="
   <p><span>本文标题:</span>HashMap的底层原理（jdk1.7.0_79）</p>
   <p><span>文章作者:</span>walking</p>
   <p><span>发布时间:</span>2019年06月12日 - 15:36:14</p>
-  <p><span>最后更新:</span>2019年08月13日 - 08:54:39</p>
+  <p><span>最后更新:</span>2019年08月13日 - 09:26:42</p>
   <p><span>原始链接:</span><a href="/page/j06w12.html" title="HashMap的底层原理（jdk1.7.0_79）">https://itwalking.top/page/j06w12.html</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://itwalking.top/page/j06w12.html" aria-label="复制成功！"></i></span>
   </p>
@@ -623,6 +623,10 @@ transient Entry[] table;</code></pre><h1 id="2-HashMap的存取实现"><a href="
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/page/a13t28.html" rel="prev" title="解决百度网盘下载慢限速问题（2019亲测可用）">
+                解决百度网盘下载慢限速问题（2019亲测可用） <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -700,7 +704,7 @@ transient Entry[] table;</code></pre><h1 id="2-HashMap的存取实现"><a href="
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -711,7 +715,7 @@ transient Entry[] table;</code></pre><h1 id="2-HashMap的存取实现"><a href="
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -722,7 +726,7 @@ transient Entry[] table;</code></pre><h1 id="2-HashMap的存取实现"><a href="
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">19</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -790,7 +794,7 @@ transient Entry[] table;</code></pre><h1 id="2-HashMap的存取实现"><a href="
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2-HashMap的存取实现"><span class="nav-number">1.</span> <span class="nav-text">2. HashMap的存取实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-解决hash冲突的办法"><span class="nav-number">2.</span> <span class="nav-text">3. 解决hash冲突的办法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-再散列rehash过程"><span class="nav-number">3.</span> <span class="nav-text">4. 再散列rehash过程</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HashMap的数据结构"><span class="nav-number">2.</span> <span class="nav-text">HashMap的数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">2.1.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表"><span class="nav-number">2.2.</span> <span class="nav-text">链表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希表"><span class="nav-number">2.3.</span> <span class="nav-text">哈希表</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HashMap的存取实现"><span class="nav-number">3.</span> <span class="nav-text">HashMap的存取实现</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决hash冲突的办法"><span class="nav-number">4.</span> <span class="nav-text">解决hash冲突的办法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#再散列rehash过程"><span class="nav-number">5.</span> <span class="nav-text">再散列rehash过程</span></a></li></ol></div>
             
 
           </div>
