@@ -454,7 +454,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">20</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -545,7 +545,7 @@
 <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <span id="busuanzi_container_site_pv" style="display:none">
-    自2019.05.24起 本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+    >>> 本站已运行: <span id="busuanzi_value_site_pv" style="color:#45BCF9"></span>
 	
 </span>
 
@@ -1190,6 +1190,14 @@
 <script type="text/javascript" src="/js/src/clicklove.js"></script> -->
 <!--<script type="text/javascript" src="/js/src/CH-Slogan.js"></script>-->
 <script>
+function show_runtime(){
+	window.setTimeout("show_runtime()",1000);X=new 
+	Date("05/24/2019 10:10:00");
+	Y=new Date();T=(Y.getTime()-X.getTime());M=24*60*60*1000;
+	a=T/M;A=Math.floor(a);b=(a-A)*24;B=Math.floor(b);c=(b-B)*60;C=Math.floor((b-B)*60);D=Math.floor((c-C)*60);
+	busuanzi_value_site_pv.innerHTML=A+" 天 "+B+" 小时 "+C+" 分 "+D+" 秒"}
+	show_runtime();
+
 console.log("同学，祝贺你喜提彩蛋~\n或许你们还在犹豫是否加入，我会坦诚的告诉你我们超酷；\n在这里大家都用无人车代步，AI音箱不仅播放还可以交互；\n人工智能是发展的核心技术，做自己让未来不只领先几步；\n在这里做自己，欢迎来到我司！\n");
 console.log("%c招聘内推简历提交：whbsmyp@163.com（你将有机会直接获得面试资格）","color:red;font-size:20px;")
 </script>
