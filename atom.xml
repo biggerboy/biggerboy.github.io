@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>walking</title>
+  <title>walking博客</title>
   
-  <subtitle>IT walking</subtitle>
+  <subtitle>IT walking博客</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://itwalking.top/"/>
