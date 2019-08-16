@@ -2033,7 +2033,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ec39ff;
+  background: #2aff4e;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3157,7 +3157,7 @@ hr {
     text-align: center;
   }
 }
-.post {
+section .post {
   margin-top: 50px;
   margin-bottom: -65px;
   padding: 25px;
