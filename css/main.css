@@ -2033,7 +2033,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #f221ff;
+  background: #dbffff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3180,7 +3180,7 @@ section .post {
     right: 10px;
   }
   .site-meta .brand {
-    padding-left: 54px;
+    margin-left: 54px;
     margin-top: -4px;
     background: none;
   }
