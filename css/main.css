@@ -2033,7 +2033,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #44ffb0;
+  background: #c624ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3174,17 +3174,33 @@ section .post {
   .posts-expand {
     margin: 0px 18px;
   }
+  .sidebar-toggle {
+    right: 10px;
+  }
+  .back-to-top {
+    right: 10px;
+  }
+  .site-meta .brand {
+    padding-left: 54px;
+    margin-top: -4px;
+    background: none;
+  }
+  .site-nav-toggle {
+    position: fixed;
+    float: left;
+  }
+  .site-nav-toggle button:focus {
+    outline: 0;
+  }
+}
+@media screen and (max-width: 440px) {
+  .sidebar-active {
+    width: 280px !important;
+  }
 }
 @media screen and (min-width: 767px) {
   .posts-expand {
     margin: 0px 18px;
-  }
-  #posts .post {
-    margin-top: 50px;
-    margin-bottom: -65px;
-    padding: 15px;
-    -webkit-box-shadow: 0px 0px 9px 1px rgba(202,203,203,0.5);
-    -moz-box-shadow: 0 0 5px rgba(202,203,204,0.5);
   }
 }
 .menu .menu-item a {
@@ -3192,6 +3208,9 @@ section .post {
 }
 .fa-fw {
   font-size: 18px;
+}
+.sidebar-toggle {
+  bottom: 60px;
 }
 @-moz-keyframes heartAnimate {
   0%, 100% {
